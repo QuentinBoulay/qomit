@@ -1,5 +1,3 @@
-Voici un exemple de fichier README pour expliquer comment utiliser et exécuter votre projet Qomit :
-
 # Qomit
 
 Qomit est un projet qui utilise ReactJs en Front et NodeJs en back pour créer une application web. Il est utilise Docker pour containeriser l'application.
