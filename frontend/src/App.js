@@ -1,13 +1,16 @@
-import { Admin, Resource, ListGuesser } from "react-admin";
-import jsonServerProvider from "ra-data-json-server";
+import React from 'react';
+import Home from "./components/client/Home.js";
+import EspaceClient from "./components/admin/EspaceClient.js";
+import { Routes, Route } from 'react-router-dom';
 
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
+function App() {
+    return (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin/*" element={<EspaceClient />} />
+      </Routes>
+    );
 
-const App = () => (
-  <Admin dataProvider={dataProvider}>
-    <Resource name="posts" list={ListGuesser} />
-    <Resource name="comments" list={ListGuesser} />
-  </Admin>
-);
+}
 
 export default App;
