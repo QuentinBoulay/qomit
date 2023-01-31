@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from "./components/client/Home.js";
+import Home from "./components/client/Home/Home.js";
 import EspaceClient from "./components/admin/EspaceClient.js";
 import { Routes, Route } from 'react-router-dom';
 

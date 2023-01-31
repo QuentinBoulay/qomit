@@ -1,0 +1,207 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Poppins', sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+$font-sizes: (14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 96);
+$violet : #5959EB;
+
+@each $font-size in $font-sizes {
+  .font-size-#{$font-size} {
+    font-size: #{$font-size}px !important;
+  }
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h1 span {
+  color: $violet;
+}
+
+a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.contact-container a:hover {
+  color: $violet;
+}
+
+.button:hover {
+  background-color: $violet;
+  transition: all 0.3s ease-in-out;
+  a {
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+
+.menu-container ul div {
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0px 0px 17px #CDCDCD;
+}
+
+.menu-container li {
+  padding: 20px 30px;
+  border-radius: 50px;
+}
+
+.client-place {
+  border: 1px solid $violet;
+  padding: 15px 15px;
+  border-radius: 50px;
+}
+
+.client-place a {
+  color: $violet !important;
+}
+
+
+.menu-container li:hover {
+  color: white !important;
+  background-color: $violet;
+  transition: all 0.3s ease-in-out;
+
+  a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+
+.active {
+  background-color: $violet;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+
+// FLASHY SLIPPY NAV STYLES
+.mobile-nav-button {
+  width:35px;
+  position:absolute;
+  margin:2rem;
+  right:0;
+  top:0;
+  z-index:9999;
+  cursor:pointer;
+  width:35px;
+  height:30px;
+  .mobile-nav-button__line {
+      width:100%;
+      height:4px;
+      background:black;
+      position:relative;
+      transition:1s ease;
+      &:nth-of-type(2) {
+          margin:0.5rem 0;
+      }
+
+  }
+  .mobile-nav-button__line--1 {
+      transform: rotate(45deg);
+      top: 13px;
+      position: absolute;
+  }
+  .mobile-nav-button__line--2 {
+      display: none;
+  }
+  .mobile-nav-button__line--3 {
+      transform: rotate(135deg);
+      top: 13px;
+      position: absolute;        
+  }
+}
+
+//Mobile Menu
+
+.mobile-menu {
+  display:block;
+  max-width:500px;
+  width:100%;
+  right:0;
+  height: 100vh;
+  background: $violet;
+  position:absolute;
+  z-index:9998;
+  transition: 0.6s ease;
+  top:0;
+  opacity:0;
+  ul {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      padding:0;
+      li {
+          list-style: none;
+          a {
+              width:100%;
+              max-width:1200px;
+              margin:0 auto;
+              display:block;
+              text-align: center;
+              text-decoration:none;
+              color:white;
+              font-weight: bold;
+              overflow:hidden;
+              position:relative;
+          }
+      }
+  }
+}
+.mobile-menu--open {
+  right:0;
+  opacity:1;
+}
+
+.line_white {
+  background: white !important;
+}
+
+.client-place-burger {
+  border: 1px solid white;
+  padding: 15px 25px;
+  border-radius: 50px;
+}
+
+/////////////////////////// HERO
+
+.hero {
+  padding: 200px 0;
+}
+
+.purple-button {
+  padding: 15px 15px;
+  border-radius: 50px;
+  background-color: $violet;
+  color: white;
+  font-weight: 500 !important;
+}
+
+.purple-button:hover {
+  color: white;
+}
+
+
+
+
+
+
