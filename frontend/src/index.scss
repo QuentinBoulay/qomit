@@ -18,6 +18,7 @@ $violet : #5959EB;
 }
 
 h1 {
+  font-size: 96px;
   font-weight: 700;
 }
 
@@ -25,14 +26,14 @@ h1 span {
   color: $violet;
 }
 
-a {
-  color: black;
-  font-weight: 600;
+a, a:hover {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: black;
+  font-weight: 600;
+
 }
 
 .contact-container a:hover {
@@ -84,7 +85,7 @@ a:hover {
 }
 
 
-.active {
+.menu-container .active {
   background-color: $violet;
 
   a {
@@ -134,6 +135,14 @@ a:hover {
 //Mobile Menu
 
 .mobile-menu {
+  background-color: white;
+  visibility: hidden;
+  position: absolute;
+  
+}
+
+.mobile-menu--open {
+  visibility: visible;
   display:block;
   max-width:500px;
   width:100%;
@@ -142,10 +151,9 @@ a:hover {
   background: $violet;
   position:absolute;
   z-index:9998;
-  transition: 0.6s ease;
   top:0;
-  opacity:0;
-  ul {
+  transition: background-color 0.6s ease-in-out;
+    ul {
       position: relative;
       top: 50%;
       transform: translateY(-50%);
@@ -166,10 +174,6 @@ a:hover {
           }
       }
   }
-}
-.mobile-menu--open {
-  right:0;
-  opacity:1;
 }
 
 .line_white {
@@ -193,14 +197,39 @@ a:hover {
   border-radius: 50px;
   background-color: $violet;
   color: white;
-  font-weight: 500 !important;
+  border: none !important;
 }
+
 
 .purple-button:hover {
-  color: white;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
 }
 
+/// VIDEO
 
+.video-container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+  margin: 100px auto;
+  box-shadow: 0px 15px 15px #CDCDCD;
+}
+
+// MEDIA QUERIES
+
+@media (max-width: 700px) {
+
+  h1 {
+    font-size: 70px !important;
+  }
+
+  .hero {
+    padding: 100px 0;
+  }
+  
+}
 
 
 

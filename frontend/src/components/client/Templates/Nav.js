@@ -42,7 +42,7 @@ function Nav ()  {
                 <div className={`mobile-nav-button__line ${isActive ? 'mobile-nav-button__line--3 line_white' : ''}`}></div>
               </div>
 
-              <nav className={`mobile-menu d-block d-sm-none ${isActive ? 'mobile-menu--open' : ''}`}>
+              <nav className={`mobile-menu ${isActive ? 'mobile-menu--open d-block d-sm-none' : ''}`}>
                 <ul className='list-unstyled'>
                   <li className='mr-1 font-size-48 active'>
                     <Link className='active' to="/admin/posts">Accueil</Link>
