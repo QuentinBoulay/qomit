@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
+const bcrypt = require('bcryptjs');
+const bodyParser = require('body-parser');
+
+// Configurer body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // create the connection to database
 const connection = mysql.createConnection({
@@ -14,6 +20,32 @@ const connection = mysql.createConnection({
 app.get('/', (req, res) => {
   res.send('Welcome to Qmklnxit')
 })
+
+//LOGIN
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const query = 'SELECT use_password FROM users WHERE use_email = ?';
+
+  connection.query(query, [email], (error, results) => {
+    if (error) {
+      res.send('Une erreur s\'est produite lors de la récupération des données.');
+    } else if (results.length === 0) {
+      res.send('Identifiant ou mot de passe incorrect.');
+    } else {
+      const hashedPassword = results[0].use_password;
+      bcrypt.compare(password, hashedPassword, (error, result) => {
+        if (error) {
+          res.send('Une erreur s\'est produite lors de la vérification du mot de passe.');
+        } else if (result) {
+          res.send('Identifiant et mot de passe corrects.');
+        } else {
+          res.send('Identifiant ou mot de passe incorrect.');
+        }
+      });
+    }
+  });
+});
+
 
 //USERS
 //get all users
