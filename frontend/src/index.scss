@@ -10,6 +10,7 @@ body {
 
 $font-sizes: (14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 76, 78, 82, 96);
 $violet : #5959EB;
+$violet-clair: #ACAAFA;
 
 @each $font-size in $font-sizes {
   .font-size-#{$font-size} {
@@ -23,7 +24,7 @@ h1 {
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 h1 span {
@@ -40,17 +41,16 @@ a {
 
 }
 
-.contact-container a:hover {
-  color: $violet;
-}
-
 .button:hover {
   background-color: $violet;
   transition: all 0.3s ease-in-out;
-  a {
-    color: white !important;
-    transition: all 0.3s ease-in-out;
-  }
+  color: white;
+}
+
+.underline-container {
+  color: black;
+  background-color: $violet-clair;
+  border-radius: 50px;
 }
 
 
@@ -68,6 +68,10 @@ a {
 
 .menu-container li {
   padding: 20px 30px;
+
+}
+
+.menu-container a {
   border-radius: 50px;
 }
 
@@ -85,23 +89,18 @@ a {
 .menu-container li:hover {
   color: white !important;
   background-color: $violet;
-  transition: all 0.3s ease-in-out;
-
-  a {
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease-in-out;
-  }
+  border-radius: 50px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 
 .menu-container .active {
   background-color: $violet;
+  color: white;
+}
 
-  a {
-    text-decoration: none;
-    color: white;
-  }
+.contact-container a:hover {
+  color: $violet;
 }
 
 
@@ -243,7 +242,7 @@ a {
 // SERVICES
 
 .services {
-  padding: 150px 50px 100px 50px;
+  padding: 100px 50px 100px 100px;
   background-color: black;
   color: white;
   border-radius: 50px 50px 0 0;
@@ -251,18 +250,23 @@ a {
   z-index: 997;
 }
 
+.description-service {
+  background-color: white;
+  color: black;
+  padding: 50px;
+  border-radius: 50px;
+  margin: 100px 0 0 0;
+}
 
+.group-buttons-services {
+  margin: 100px 0 0 0;
+}
 
-
-
-
-
-
-
-
-
-
-
+.input-container {
+  border: 0.5px solid white;
+  border-radius: 50px;
+  padding: 20px 50px;
+}
 
 
 

@@ -26,18 +26,26 @@ function Nav ()  {
             <div className='menu-container p-0 col-12 col-lg-6 col-md-6 d-none d-lg-block'>
                 <ul className='list-unstyled d-flex justify-content-center'>
                   <div className='d-flex'>
-                    <li className='mr-1 font-size-14 active'>
-                      <Link className='active' to="/admin/posts">Accueil</Link>
-                    </li>
+                  <Link className='active' to="/admin/posts">
                     <li className='mr-1 font-size-14'>
-                      <Link to="/admin/posts">Services</Link>
+                      Accueil
                     </li>
+                  </Link>
+                  <Link to="/admin/posts">
                     <li className='mr-1 font-size-14'>
-                      <Link to="/admin/posts">L'agence</Link>
+                      Services
                     </li>
+                  </Link>
+                  <Link to="/admin/posts">
+                    <li className='mr-1 font-size-14'>
+                      L'agence
+                    </li>
+                  </Link>
+                  <Link to="/admin/posts">
                     <li className='font-size-14'>
-                      <Link to="/admin/posts">Devis</Link>
+                      Devis
                     </li>
+                  </Link>
                   </div>
                 </ul>
               </div>
@@ -72,9 +80,11 @@ function Nav ()  {
               </nav>
               <div className='contact-container p-0 d-flex justify-content-end align-items-center col-12 col-lg-3'>
                 <Link className='d-none d-lg-block font-size-14' to="/admin/posts">Contact</Link>
-                <div className='d-none d-lg-block ml-4 client-place button'>
-                  <Link className='font-size-14' to="/admin/posts">Espace client</Link>
-                </div>
+                <Link className='font-size-14' to="/admin/posts">
+                  <li className='d-none d-lg-block ml-4 client-place button'>
+                    Espace client
+                  </li>
+                </Link>
               </div>
             </div>
         </nav>
