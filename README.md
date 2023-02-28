@@ -11,21 +11,34 @@ Qomit est un projet qui utilise ReactJs en Front et NodeJs en back pour créer u
 ## Installation
 
 1. Clonez le projet à l'aide de la commande suivante :
+
 git clone https://github.com/Nobh/Qomit.git
 
 
 2. Installez les dépendances pour le front-end en utilisant la commande suivante :
+
 cd Qomit/frontend
+
 npm install
+
+npm install react-router-dom react-admin ra-data-json-server sass
+
+Pour le dev : npm install npm-watch
 
 
 3. Installez les dépendances pour le back-end en utilisant la commande suivante :
+
 cd Qomit/backend
+
 npm install
+
+Pour le dev : npm install nodemon --save-dev
 
 
 4. Construisez et lancez les images Docker en utilisant la commande suivante :
+
 cd Qomit
+
 docker-compose up
 
 
