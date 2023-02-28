@@ -21,7 +21,9 @@ cd Qomit/frontend
 
 npm install
 
-npm install react-router-dom react-admin ra-data-json-server sass 
+npm install react-router-dom react-admin ra-data-json-server sass
+
+Pour le dev : npm install npm-watch
 
 
 3. Installez les dépendances pour le back-end en utilisant la commande suivante :
@@ -29,6 +31,8 @@ npm install react-router-dom react-admin ra-data-json-server sass
 cd Qomit/backend
 
 npm install
+
+Pour le dev : npm install nodemon --save-dev
 
 
 4. Construisez et lancez les images Docker en utilisant la commande suivante :
