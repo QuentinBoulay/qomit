@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   frontend:
+    command: npm run watch
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
     volumes:
       - ./frontend:/app 
   backend:
+    command: npm run watch 
     build:
       context: backend
       dockerfile: Dockerfile

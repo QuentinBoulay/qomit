@@ -20,6 +20,7 @@ git clone https://github.com/Nobh/Qomit.git
 cd Qomit/frontend
 
 npm install
+npm install react-router-dom react-admin ra-data-json-server sass 
 
 npm install react-router-dom react-admin ra-data-json-server sass
 
