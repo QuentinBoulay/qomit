@@ -266,6 +266,10 @@ a {
   z-index: 997;
 }
 
+.services h3 {
+  font-size: 1.5em;
+}
+
 .description-service {
   background-color: white;
   color: black;
@@ -362,11 +366,37 @@ a {
   border-radius: 50px;
 }
 
+// NOS REALISATIONS
+
+.nos-realisations-container {
+  padding: 50px 0 50px 100px;
+  background-color: #FAF9F6;
+}
+
+.col-use-case {
+  background-color: #FFE8D3;
+  border-radius: 50px 0 0 50px;
+  padding: 50px 70px 50px 70px;
+  margin: 0 !important;
+}
+
+.col-use-case img {
+  width: 200px !important;
+}
+
+.col-use-case h3 {
+  font-weight: 600;
+}
+
+.row {
+  margin: 0;
+}
+
 // MEDIA QUERIES
 
 @media (max-width: 700px) {
   h1 {
-    font-size: 56px !important;
+    font-size: 3em !important;
   }
 
   .hero {
@@ -398,11 +428,11 @@ a {
   }
 
   .services h2 {
-    font-size: 42px !important;
+    font-size: 2.5em !important;
   }
 
   .input-container h3 {
-    font-size: 18px;
+    font-size: 1em;
   }
 
   .group-buttons-services {
@@ -412,4 +442,38 @@ a {
   .input-container {
     padding: 20px 30px;
   }
+
+  .devis-container {
+    padding: 60px 50px 250px 50px;
+  }
+
+  .nos-realisations-container {
+    padding: 60px 0 60px 0;
+    border-radius: 50px !important;
+  }
+
+  .col-title {
+    padding: 0px 50px 50px 50px !important;
+  }
+
+  .col-title h2 {
+    font-size: 2.5em !important;
+  }
+
+    
+}
+
+@media (max-width: 1000px) {
+
+  .devis-container lottie-player {
+    width: 200px !important;
+    height: 200px !important;
+    bottom: -21px !important;
+    right: 145px !important;
+  }
+
+  .col-title {
+    padding: 0px 50px 50px 0px;
+  }
+
 }
