@@ -77,6 +77,11 @@ app.get('/users/:id', (req, res) => {
 });
 
 
+
+
+
+
+
 //TABLEAU DE BORD
 //last project user
 //Dernier projet avec l'avancée des tâches d'utilisateur
@@ -112,9 +117,6 @@ app.get('/last_project/:id', (req, res) => {
 
 
 
-
-
-
 //last documents projets
 //3 derniers documents de chacun des projets de l'utilisateur
 const fields_last_documents = [
@@ -141,7 +143,7 @@ app.get('/last_documents/:id', (req, res) => {
     const projectsWithDocuments = [];
 
     projects.forEach((project) => {
-      connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ?`, [project.pro_id], (error, results) => {
+      connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ? ORDER BY d.doc_create_date DESC LIMIT 3`, [project.pro_id], (error, results) => {
         if (error) throw error;
 
         const projectWithDocuments = {
@@ -173,6 +175,13 @@ app.get('/last_documents/:id', (req, res) => {
     });
   });
 });
+
+
+
+
+
+
+
 
 
 //PROJETS
@@ -298,13 +307,51 @@ app.get('/project/:user_id/:project_id', (req, res) => {
         // merge the project data with the states and tasks data
         const data = { ...project, states, tasks };
 
-        res.send(data);
+        res.json(data);
       });
     });
   });
 });
 
 
+
+
+
+
+
+
+//DOCUMENTS
+//get all documents from 1 project
+
+
+app.get('/documents/:project_id', (req, res) => {
+  const project_id = req.params.project_id;
+
+  connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [project_id], (error, results) => {
+    if (error) throw error;
+
+    const groupedResults = results.reduce((acc, curr) => {
+      const typeIndex = acc.findIndex((obj) => obj.doc_typ_name === curr.doc_typ_name);
+
+      if (typeIndex === -1) {
+        acc.push({
+          doc_typ_name: curr.doc_typ_name,
+          documents: [curr]
+        });
+      } else {
+        acc[typeIndex].documents.push(curr);
+      }
+
+      return acc;
+    }, []);
+
+    // Add "tout" category that includes all documents
+    const allDocuments = results.map((result) => ({ ...result, doc_typ_name: "Tout" }));
+    groupedResults.unshift({ doc_typ_name: "tout", documents: allDocuments });
+
+    res.json(groupedResults);
+  });
+});
 
 
 
