@@ -50,13 +50,14 @@ app.post('/login', (req, res) => {
 //USERS
 //get all users
 const fields_user = [
-  'use_id',
-  'use_firstname',
-  'use_lastname',
-  'use_email',
-  'use_picture',
-  'ref_companies',
-  'ref_user_status'
+  'u.use_id',
+  'u.use_firstname',
+  'u.use_lastname',
+  'u.use_email',
+  'u.use_phone',
+  'u.use_picture',
+  'c.com_name',
+  'u.ref_user_status'
 ];
 
 app.get('/users', (req, res) => {
@@ -70,13 +71,46 @@ app.get('/users', (req, res) => {
 
 app.get('/users/:id', (req, res) => {
   const id = req.params.id;
-  connection.query(`SELECT ${fields_user.join(', ')} FROM users WHERE use_id = ?`, [id], (error, results) => {
+  connection.query(`SELECT ${fields_user.join(', ')} FROM users u INNER JOIN companies c ON u.ref_companies = c.com_id WHERE use_id = ?`, [id], (error, results) => {
     if (error) throw error;
     res.json(results[0]);
   });
 });
 
 
+//post change password
+
+app.put('/users/:id/password', (req, res) => {
+  const user_id = req.params.id;
+  const { old_password, new_password, confirm_password } = req.body;
+
+  connection.query('SELECT use_password FROM users WHERE use_id = ?', [user_id], async (error, results) => {
+    if (error) throw error;
+
+    const user = results[0];
+
+    // Check if old password is correct
+    const isMatch = await bcrypt.compare(old_password, user.use_password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Ancien mot de passe incorrect' });
+    }
+
+    // Check if new password matches confirmation
+    if (new_password !== confirm_password) {
+      return res.status(400).json({ message: 'Le nouveau mot de passe ne correspond pas à la confirmation' });
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(new_password, 10);
+
+    // Update password
+    connection.query('UPDATE users SET use_password = ? WHERE use_id = ?', [hashedPassword, user_id], (error, results) => {
+      if (error) throw error;
+
+      res.json({ message: 'Mot de passe mis à jour avec succès' });
+    });
+  });
+});
 
 
 
@@ -95,7 +129,7 @@ const fields_last_project_states = [
   'ps.pro_sta_states'
 ];
 
-app.get('/last_project/:id', (req, res) => {
+app.get('/users/:id/last_project', (req, res) => {
   const id = req.params.id;
   connection.query(`SELECT ${fields_last_project.join(', ')} FROM projects WHERE ref_users = ? ORDER BY pro_date_start DESC LIMIT 1`, [id], (error, results) => {
     if (error) throw error;
@@ -133,7 +167,7 @@ const fields_document = [
   'dt.doc_typ_image'
 ];
 
-app.get('/last_documents/:id', (req, res) => {
+app.get('/users/:id/last_documents', (req, res) => {
   const id = req.params.id;
   connection.query(`SELECT ${fields_last_documents.join(', ')} FROM projects WHERE ref_users = ? ORDER BY pro_date_start DESC`, [id], (error, results) => {
     if (error) throw error;
@@ -196,7 +230,7 @@ const fields_projects = [
   'u.use_lastname'
 ];
 
-app.get('/projects/:id', (req, res) => {
+app.get('/users/:id/projects', (req, res) => {
   const id = req.params.id;
 
   connection.query(`SELECT ${fields_projects.join(', ')} FROM projects p INNER JOIN users u ON p.ref_responsable = u.use_id WHERE ref_users = ?`, [id], (error, projects) => {
@@ -272,7 +306,7 @@ const fields_project_tasks = [
   'ts.tas_sta_name'
 ];
 
-app.get('/project/:user_id/:project_id', (req, res) => {
+app.get('/users/:user_id/projects/:project_id', (req, res) => {
   const user_id = req.params.user_id;
   const project_id = req.params.project_id;
 
@@ -324,10 +358,12 @@ app.get('/project/:user_id/:project_id', (req, res) => {
 //get all documents from 1 project
 
 
-app.get('/documents/:project_id', (req, res) => {
+app.get('/users/:user_id/projects/:project_id/documents', (req, res) => {
+  const user_id = req.params.user_id
   const project_id = req.params.project_id;
 
-  connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [project_id], (error, results) => {
+  //connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [project_id], (error, results) => {
+  connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types INNER JOIN projects p ON pd.pro_id = p.pro_id WHERE p.ref_users = ? AND pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [user_id, project_id], (error, results) => {
     if (error) throw error;
 
     const groupedResults = results.reduce((acc, curr) => {
