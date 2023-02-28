@@ -15,18 +15,20 @@ git clone https://github.com/Nobh/Qomit.git
 
 
 2. Installez les dépendances pour le front-end en utilisant la commande suivante :
-cd Qomit/frontend
-npm install
+-cd Qomit/frontend
+-npm install
+-npm install react-router-dom react-admin ra-data-json-server sass 
 
 
 3. Installez les dépendances pour le back-end en utilisant la commande suivante :
 cd Qomit/backend
-npm install
+
+-npm install
 
 
 4. Construisez et lancez les images Docker en utilisant la commande suivante :
-cd Qomit
-docker-compose up
+-cd Qomit
+-docker-compose up
 
 
 5. Accédez à l'URL http://localhost:3000 dans votre navigateur pour voir l'application en cours d'exécution.
