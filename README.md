@@ -17,6 +17,7 @@ git clone https://github.com/Nobh/Qomit.git
 2. Installez les dépendances pour le front-end en utilisant la commande suivante :
 cd Qomit/frontend
 npm install
+npm install react-router-dom react-admin ra-data-json-server sass 
 
 
 3. Installez les dépendances pour le back-end en utilisant la commande suivante :
