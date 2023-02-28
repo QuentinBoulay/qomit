@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Qmklnxit')
+  res.send('Welcome to Qomit')
 })
 
 //LOGIN
