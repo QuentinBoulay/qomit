@@ -400,11 +400,11 @@ a {
 
 .companies-container {
   padding: 150px 0;
+  background-color: white;
 }
 
 .companies-container h2 {
   font-weight: 700;
-  padding: 0 10%;
   margin: 0 0 100px 0;
 }
 
@@ -413,7 +413,22 @@ a {
 }
 
 .card {
-  margin: 0 30px 0 0;
+  margin: 0 20px;
+  padding: 30px 50px;
+  background-color: #FAF9F6;
+  border-radius: 50px;
+  border: none;
+}
+
+.custom-arrow {
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 // MEDIA QUERIES
