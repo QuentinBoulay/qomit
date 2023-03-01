@@ -80,6 +80,10 @@ a {
 
 // MENU CONTAINER
 
+.logo-container img {
+  width: 200px;
+}
+
 .menu-container ul div {
   background-color: white;
   border-radius: 50px;
@@ -370,11 +374,11 @@ a {
 
 .nos-realisations-container {
   padding: 50px 0 50px 100px;
-  background-color: #FAF9F6;
+  background-color: #faf9f6;
 }
 
 .col-use-case {
-  background-color: #FFE8D3;
+  background-color: #ffe8d3;
   border-radius: 50px 0 0 50px;
   padding: 50px 70px 50px 70px;
   margin: 0 !important;
@@ -390,6 +394,26 @@ a {
 
 .row {
   margin: 0;
+}
+
+// COMPANIES
+
+.companies-container {
+  padding: 150px 0;
+}
+
+.companies-container h2 {
+  font-weight: 700;
+  padding: 0 10%;
+  margin: 0 0 100px 0;
+}
+
+.companies-container h2 span {
+  color: $violet;
+}
+
+.card {
+  margin: 0 30px 0 0;
 }
 
 // MEDIA QUERIES
@@ -427,7 +451,9 @@ a {
     margin: 60px 0 0 0;
   }
 
-  .services h2 {
+  .services h2,
+  .col-title h2,
+  .companies-container h2 {
     font-size: 2.5em !important;
   }
 
@@ -455,16 +481,9 @@ a {
   .col-title {
     padding: 0px 50px 50px 50px !important;
   }
-
-  .col-title h2 {
-    font-size: 2.5em !important;
-  }
-
-    
 }
 
 @media (max-width: 1000px) {
-
   .devis-container lottie-player {
     width: 200px !important;
     height: 200px !important;
@@ -475,5 +494,4 @@ a {
   .col-title {
     padding: 0px 50px 50px 0px;
   }
-
 }
