@@ -1,0 +1,167 @@
+$violet-blanc : #F0F0FD;
+$violet : #5955F4;
+$violet-clair : #ACAAFA;
+$noir : #0F0F0F;
+$bleu-casse : #EEF1F8;
+$blanc : #FBFBFB;
+
+$font-sizes: (
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    55,
+    46,
+    48,
+    76,
+    78,
+    80,
+    82,
+    96
+);
+
+@each $font-size in $font-sizes {
+    .font-size-#{$font-size} {
+        font-size: #{$font-size}px !important;
+    }
+}
+
+.body-admin {
+    min-height: 100vh;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $violet-blanc;
+}
+
+
+//LOGIN
+.login-page {
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 150px;
+        padding-bottom: 40px;
+        ;
+
+        img {
+            max-width: 250px;
+        }
+    }
+
+    .form_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 40px;
+
+        .form_container {
+            background-color: $blanc;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 70px 60px;
+            box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.05);
+
+            h1 {
+                color: $noir;
+                font-weight: bold;
+                width: 65%;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            form {
+                width: 100%;
+                max-width: 65%;
+
+                .input_block {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 8px;
+
+                    label {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: $noir;
+                        margin-bottom: 4px;
+                    }
+
+                    input {
+                        background-color: $bleu-casse;
+                        border: none;
+                        border-radius: 15px;
+                        padding: 12px 14px;
+                        font-size: 16px;
+                        border: 2px solid $bleu-casse;
+                    }
+                }
+
+                button {
+                    background-color: $violet;
+                    color: $blanc;
+                    font-weight: bold;
+                    font-size: 18px;
+                    border-radius: 15px;
+                    border: 2px solid $violet;
+                    padding: 12px 14px;
+                    width: 100%;
+                    margin-top: 8px;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        background-color: $violet-clair;
+                        border-color: $violet-clair;
+                        transition: all 0.3s;
+                    }
+
+                }
+            }
+
+            .error_message {
+                margin-top: 25px;
+                font-size: 14px;
+                color: $noir;
+                text-align: center;
+                width: 100%;
+                max-width: 65%;
+            }
+        }
+
+    }
+}
+
+
+@media (min-width: 1200px) {
+    /* LG */
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* MD */
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* SM */
+}
+
+@media (max-width: 767px) {
+    /* XS */
+
+}

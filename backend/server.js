@@ -4,6 +4,13 @@ const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+
 // Configurer body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,22 +31,44 @@ app.get('/', (req, res) => {
 //LOGIN
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  const query = 'SELECT use_password FROM users WHERE use_email = ?';
-
+  const query = 'SELECT use_password, use_token FROM users WHERE use_email = ?';
   connection.query(query, [email], (error, results) => {
+
     if (error) {
-      res.send('Une erreur s\'est produite lors de la récupération des données.');
+      const returnResult = {
+        error: 1,
+        message: 'Une erreur s\'est produite lors de la récupération des données'
+      }
+      res.json(returnResult);
     } else if (results.length === 0) {
-      res.send('Identifiant ou mot de passe incorrect.');
+      const returnResult = {
+        error: 1,
+        message: 'Identifiant ou mot de passe incorrect'
+      }
+      res.json(returnResult);
     } else {
       const hashedPassword = results[0].use_password;
+      const use_token = results[0].use_token;
       bcrypt.compare(password, hashedPassword, (error, result) => {
         if (error) {
-          res.send('Une erreur s\'est produite lors de la vérification du mot de passe.');
+          const returnResult = {
+            error: 1,
+            message: 'Une erreur s\'est produite lors de la vérification du mot de passe'
+          }
+          res.json(returnResult);
         } else if (result) {
-          res.send('Identifiant et mot de passe corrects.');
+          const returnResult = {
+            error: 0,
+            message: 'Identifiant et mot de passe corrects',
+            token: use_token
+          }
+          res.json(returnResult);
         } else {
-          res.send('Identifiant ou mot de passe incorrect.');
+          const returnResult = {
+            error: 1,
+            message: 'Identifiant ou mot de passe incorrect'
+          }
+          res.json(returnResult);
         }
       });
     }
@@ -51,6 +80,7 @@ app.post('/login', (req, res) => {
 //get all users
 const fields_user = [
   'u.use_id',
+  'u.use_token',
   'u.use_firstname',
   'u.use_lastname',
   'u.use_email',
@@ -61,7 +91,7 @@ const fields_user = [
 ];
 
 app.get('/users', (req, res) => {
-  connection.query(`SELECT ${fields_user.join(', ')} FROM users`, (error, results) => {
+  connection.query(`SELECT ${fields_user.join(', ')} FROM users u INNER JOIN companies c ON u.ref_companies = c.com_id`, (error, results) => {
     if (error) throw error;
     res.json(results);
   });
@@ -74,6 +104,28 @@ app.get('/users/:id', (req, res) => {
   connection.query(`SELECT ${fields_user.join(', ')} FROM users u INNER JOIN companies c ON u.ref_companies = c.com_id WHERE use_id = ?`, [id], (error, results) => {
     if (error) throw error;
     res.json(results[0]);
+  });
+});
+
+//check user token
+app.get('/users/token/:token', (req, res) => {
+  const token = req.params.token;
+  connection.query('SELECT * FROM users WHERE use_token = ?', [token], (error, results) => {
+    if (error) throw error;
+    let result = {};
+    if (results[0]) {
+      result = {
+        authentification: 1,
+        use_token: results[0].use_token
+      };
+    }
+    else {
+      result = {
+        authentification: 0
+      };
+    }
+
+    res.json(result);
   });
 });
 

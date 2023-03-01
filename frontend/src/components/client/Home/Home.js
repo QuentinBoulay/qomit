@@ -5,7 +5,7 @@ import Ticker from "./Ticker.js";
 
 function Home() {
   return (
-    <>
+    <div className="body-home">
       <Nav />
       <Hero />
       <Services />
@@ -34,7 +34,7 @@ function Home() {
           autoplay
         ></lottie-player>
       </div>
-    </>
+    </div>
   );
 }
 
