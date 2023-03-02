@@ -5,6 +5,8 @@ import Ticker from "./Ticker.js";
 import Devis from "./Devis.js";
 import Cases from "./Cases.js";
 import Companies from "./Companies/Companies.js";
+import Contact from "../Templates/Contact.js";
+import Footer from "../Templates/Footer.js";
 
 function Home() {
   return (
@@ -16,6 +18,8 @@ function Home() {
       <Devis />
       <Cases />
       <Companies />
+      <Contact />
+      <Footer />
     </>
   );
 }

@@ -431,6 +431,83 @@ a {
   cursor: pointer;
 }
 
+// CONTACT
+
+.contact-section-container {
+  border-radius: 50px 50px 0px 0px;
+  padding: 50px 0 50px 100px;
+  background-color: $violet;
+}
+
+.col-contact-section {
+  background-image: url('img/contact-circle-background.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: 50%;
+  text-align: center;
+  padding: 120px 15px 120px 15px;
+  margin: 0 !important;
+}
+
+.col-contact-section img {
+  width: 200px !important;
+}
+
+.title-white{
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.col-contact-section h3 {
+  font-weight: 500;
+  color: $violet;
+}
+
+.col-contact-section img{
+  width: 80px !important;
+  margin-bottom: -20px;
+}
+
+.row {
+  margin: 0;
+}
+
+//FOOTER
+
+.container-footer-section{
+  background-color: #000;
+}
+
+.container-footer-section{
+  .row{
+    padding: 100px 0px 100px 100px;
+  }
+
+  .col-footer-section-logo{
+    margin-right: 100px;
+  }
+
+  p{
+    color: #ADADAD;
+  }
+
+  ul li{
+    margin: 15px 0px;
+  }
+  ul li a{
+    color: #fff;
+  }
+
+  ul li a:hover{
+    color:$violet;
+  }
+
+  .col-footer-section{
+    display: flex ;
+    align-items: center;
+  }
+}
+
 // MEDIA QUERIES
 
 @media (max-width: 700px) {
@@ -493,8 +570,41 @@ a {
     border-radius: 50px !important;
   }
 
+  .contact-section-container, .container-footer-section .row{
+    padding: 60px 0 60px 0;
+  }
+
+  .col-contact-section{
+    padding: 45px 15px 45px 15px;
+  }
+
+  .title-white{
+    text-align: center;
+  }
+
+  .col-contact-section h3 {
+    font-size: 1em !important;
+  }
+  
+  .col-contact-section img{
+    width: 50px !important;
+    margin-top: 20px;
+    margin-bottom: -20px;
+  }
+
   .col-title {
     padding: 0px 50px 50px 50px !important;
+  }
+
+  .col-footer-section-logo{
+    text-align: center;
+  }
+
+  .col-footer-section{
+    justify-content: center;
+    ul{
+      text-align: center;
+    }
   }
 }
 

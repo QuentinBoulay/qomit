@@ -16,7 +16,7 @@ function Companies() {
     {
       image1: {imgcase},
       text1: "My team and I are strong believers that personalized videos are a powerful way to build trusted relationships with our customers, and Potion is helping us do exactly that",
-      subtitle: "Adrien Rossignol, Sales & Marketing Director, OVH ",
+      subtitle: "Quentin Boulay, Sales & Marketing Director, OVH ",
       image2: {imgcase2},
     },
     {
