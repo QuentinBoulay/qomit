@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom';
 
 import '../../admin.scss';
 
-import logo from "../../img/logo.png";
+import NavAdmin from '../admin/Templates/NavAdmin';
+
 
 import { API_BASE_URL, API_EP_LOGIN } from '../../apiConstantes';
 
 function Dashboard() {
+    const activePage = "dashboard";
+
     const navigate = useNavigate();
 
     const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
+    const [isFixed, setIsFixed] = useState(false);
 
     useEffect(() => {
         if (!userToken) {
@@ -18,17 +22,19 @@ function Dashboard() {
         }
     }, [userToken, navigate]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('user_token_qomit');
-        setUserToken(null);
-    }
+
 
     return (
-        <>
-            <h1>Tableau de bord</h1>
-            <div>Token : {userToken} </div>
-            <button onClick={handleLogout}>Déconnexion</button>
-        </>
+        <div className='body-admin'>
+            <div className='page'>
+                <div className='nav_admin'>
+                    <NavAdmin activeLink={activePage} />
+                </div>
+                <div className='page_block'>
+                    <h1>Tableau de bord</h1>
+                </div>
+            </div>
+        </div>
     );
 }
 

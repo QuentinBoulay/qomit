@@ -4,6 +4,7 @@ $violet-clair : #ACAAFA;
 $noir : #0F0F0F;
 $bleu-casse : #EEF1F8;
 $blanc : #FBFBFB;
+$gris : #DCDBDB;
 
 $font-sizes: (
     14,
@@ -147,6 +148,191 @@ $font-sizes: (
     }
 }
 
+//NAV ADMIN
+.menu_admin {
+    min-height: calc(100vh - 40px);
+    background-color: $blanc;
+    box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .block {
+
+
+        .burger {
+            display: flex;
+            justify-content: end;
+            padding: 20px;
+
+            img {
+                width: 40px;
+            }
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            max-width: 250px;
+            margin: 40px auto 65px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .small_logo {
+            img {
+                width: 65px;
+            }
+        }
+
+
+
+
+        .block_links {
+
+            .link {
+                display: flex;
+                align-items: center;
+                width: 300px;
+                margin: 0 20px;
+                padding: 5px 11px;
+                border-radius: 10px;
+                cursor: pointer;
+
+                .icon {
+                    padding: 10px;
+                    min-width: 25px;
+                }
+
+                .text {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: $gris;
+                    padding-left: 10px;
+                }
+            }
+
+            .active {
+                background-color: $violet;
+
+                .text {
+                    color: $blanc;
+                }
+            }
+
+            .hide_text {
+                .text {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    .nav_footer {
+        margin-bottom: 20px;
+
+        .user_info {
+            display: flex;
+            align-items: center;
+            width: 300px;
+            margin: 15px 20px;
+            padding: 5px;
+
+            .image {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .text {
+                color: $violet;
+                font-weight: 600;
+                padding-left: 15px;
+            }
+        }
+
+        .link {
+            background-color: $violet-blanc;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            margin: 0 20px;
+            padding: 5px 11px;
+            border-radius: 10px;
+            cursor: pointer;
+
+            .icon {
+                padding: 12px;
+                min-width: 25px;
+            }
+
+            .text {
+                font-size: 18px;
+                font-weight: bold;
+                color: $violet-clair;
+                padding-left: 10px;
+            }
+        }
+
+        .hide_text {
+            .text {
+                display: none;
+            }
+        }
+    }
+
+}
+
+.menu_close {
+
+    .block {
+
+        .block_links {
+            .link {
+                width: auto;
+                justify-content: center;
+            }
+        }
+    }
+
+    .nav_footer {
+
+        .user_info {
+            width: auto;
+        }
+
+        .link {
+            width: auto;
+            justify-content: center;
+        }
+    }
+}
+
+
+
+
+//DASHBOARD
+.page {
+    display: none;
+    transition: all 0.3s;
+
+    .nav_admin {
+        padding: 20px;
+        position: fixed;
+    }
+}
 
 @media (min-width: 1200px) {
     /* LG */

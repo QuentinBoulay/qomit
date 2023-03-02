@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 //LOGIN
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  const query = 'SELECT use_password, use_token FROM users WHERE use_email = ?';
+  const query = 'SELECT use_password, use_token, use_id FROM users WHERE use_email = ?';
   connection.query(query, [email], (error, results) => {
 
     if (error) {
@@ -49,6 +49,7 @@ app.post('/login', (req, res) => {
     } else {
       const hashedPassword = results[0].use_password;
       const use_token = results[0].use_token;
+      const use_id = results[0].use_id;
       bcrypt.compare(password, hashedPassword, (error, result) => {
         if (error) {
           const returnResult = {
@@ -60,7 +61,8 @@ app.post('/login', (req, res) => {
           const returnResult = {
             error: 0,
             message: 'Identifiant et mot de passe corrects',
-            token: use_token
+            use_token: use_token,
+            use_id: use_id
           }
           res.json(returnResult);
         } else {
@@ -116,7 +118,8 @@ app.get('/users/token/:token', (req, res) => {
     if (results[0]) {
       result = {
         authentification: 1,
-        use_token: results[0].use_token
+        use_token: results[0].use_token,
+        use_id: result[0].use_id
       };
     }
     else {

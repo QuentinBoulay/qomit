@@ -33,7 +33,8 @@ function Login() {
       console.log(jsonData);
 
       if (jsonData.error === 0) {
-        localStorage.setItem('user_token_qomit', jsonData.token);
+        localStorage.setItem('user_token_qomit', jsonData.use_token);
+        localStorage.setItem('user_id_qomit', jsonData.use_id);
         navigate('/dashboard');
       }
       else {
@@ -43,7 +44,9 @@ function Login() {
       }
 
       const userToken = localStorage.getItem('user_token_qomit');
+      const userId = localStorage.getItem('user_id_qomit');
       console.log(userToken);
+      console.log(userId);
     } catch (error) {
       console.error(error);
     }
