@@ -7,6 +7,7 @@ import Cases from "./Cases.js";
 import Companies from "./Companies/Companies.js";
 import Contact from "../Templates/Contact.js";
 import Footer from "../Templates/Footer.js";
+import BrandSlider from "./Brandslider.js";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Devis />
       <Cases />
       <Companies />
+      <BrandSlider />
       <Contact />
       <Footer />
     </>
