@@ -33,7 +33,7 @@ function NavAdmin(props) {
     const location = useLocation();
 
     useEffect(() => {
-        if (location.state?.isMenuOpen == undefined) {
+        if (location.state?.isMenuOpen === undefined) {
             setisMenuOpen(true);
             handleBurger(true);
         } else {
@@ -45,8 +45,8 @@ function NavAdmin(props) {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth <= 767);
-            if (window.innerWidth <= 767) {
+            setIsSmallScreen(window.innerWidth <= 991);
+            if (window.innerWidth <= 991) {
                 setisMenuOpen(false);
                 handleBurger(false);
             }
@@ -72,11 +72,11 @@ function NavAdmin(props) {
     const handleClick = (link, menuOpen) => {
         if (link === 'dashboard') {
             navigate('/dashboard', { state: { isMenuOpen: menuOpen } });
-        } else if (link === 'projectsList') {
-            navigate('/projectsList', { state: { isMenuOpen: menuOpen } });
+        } else if (link === 'projects') {
+            navigate('/projects', { state: { isMenuOpen: menuOpen } });
         }
-        else if (link === 'documentsList') {
-            navigate('/documentsList', { state: { isMenuOpen: menuOpen } });
+        else if (link === 'documents') {
+            navigate('/documents', { state: { isMenuOpen: menuOpen } });
         }
         else if (link === 'profile') {
             navigate('/profile', { state: { isMenuOpen: menuOpen } });
@@ -134,20 +134,20 @@ function NavAdmin(props) {
                         <div className="text">Tableau de bord</div>
                     </div>
                     <div
-                        className={`link ${activeLink === "projectsList" ? "active" : ""} ${isMenuOpen ? "" : "hide_text"}`}
-                        onClick={() => handleClick("projectsList", isMenuOpen)}
+                        className={`link ${activeLink === "projects" ? "active" : ""} ${isMenuOpen ? "" : "hide_text"}`}
+                        onClick={() => handleClick("projects", isMenuOpen)}
                     >
                         <div className="icon">
-                            <img src={activeLink === "projectsList" ? ProjectIcon : ProjectActiveIcon} alt="icone du suivi de projet" />
+                            <img src={activeLink === "projects" ? ProjectIcon : ProjectActiveIcon} alt="icone du suivi de projet" />
                         </div>
                         <div className="text">Suivi de projet</div>
                     </div>
                     <div
-                        className={`link ${activeLink === "documentsList" ? "active" : ""} ${isMenuOpen ? "" : "hide_text"}`}
-                        onClick={() => handleClick("documentsList", isMenuOpen)}
+                        className={`link ${activeLink === "documents" ? "active" : ""} ${isMenuOpen ? "" : "hide_text"}`}
+                        onClick={() => handleClick("documents", isMenuOpen)}
                     >
                         <div className="icon">
-                            <img src={activeLink === "documentsList" ? DocumentsIcon : DocumentsActiveIcon} alt="icone des documents" />
+                            <img src={activeLink === "documents" ? DocumentsIcon : DocumentsActiveIcon} alt="icone des documents" />
                         </div>
                         <div className="text">Mes documents</div>
                     </div>

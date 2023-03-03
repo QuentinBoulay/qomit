@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 import '../../../admin.scss';
 
-import NavAdmin from '../../admin/Templates/NavAdmin';
+import NavAdmin from '../Templates/NavAdmin';
 
 
 //import { API_BASE_URL, API_EP_LOGIN } from '../../apiConstantes';
 
 function ProjectsList() {
-    const activePage = "projectsList";
+    const activePage = "projects";
 
     return (
         <div className='body-admin'>

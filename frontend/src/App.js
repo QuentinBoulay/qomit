@@ -4,8 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 import Home from "./components/client/Home/Home.js";
 import Login from "./components/admin/Login.js";
 import Dashboard from "./components/admin/Dashboard.js";
-import ProjectsList from './components/admin/Projects/ProjectsList.js';
-import DocumentsList from './components/admin/Documents/DocumentsList.js';
+import Projects from './components/admin/Projects/Projects.js';
+import ProjectDetails from './components/admin/Projects/ProjectDetails.js';
+import Documents from './components/admin/Documents/Documents.js';
 import Profile from './components/admin/Profile/Profile.js';
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/admin" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/projectsList" element={<ProjectsList />} />
-      <Route path="/documentsList" element={<DocumentsList />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/projects/:id" element={<ProjectDetails />} />
+      <Route path="/documents" element={<Documents />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

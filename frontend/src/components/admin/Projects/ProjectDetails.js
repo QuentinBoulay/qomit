@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import '../../../admin.scss';
 
 import NavAdmin from '../../admin/Templates/NavAdmin';
 
+function ProjectDetails() {
+    const activePage = "projects";
 
-//import { API_BASE_URL, API_EP_LOGIN } from '../../apiConstantes';
+    let { id } = useParams();
 
-function DocumentsList() {
-    const activePage = "documentsList";
+    console.log(id);
 
     return (
         <div className='body-admin'>
@@ -18,11 +19,12 @@ function DocumentsList() {
                     <NavAdmin activeLink={activePage} />
                 </div>
                 <div className='page_block'>
-                    <h1>Mes documents</h1>
+                    <h1>Mon projet en détail</h1>
+                    <p>Détails du projet {id}</p>
                 </div>
             </div>
         </div>
     );
 }
 
-export default DocumentsList;
+export default ProjectDetails;
