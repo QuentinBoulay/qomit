@@ -340,7 +340,7 @@ $font-sizes: (
     .page_block {
         padding: 15px 0;
         margin-right: 30px;
-        width: calc(100vw - 134px);
+        width: calc(100vw - 98px);
 
         h1 {
             font-weight: bold;
@@ -380,10 +380,11 @@ $font-sizes: (
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 0 30px;
 
     .last_project {
         background-color: $blanc;
-        width: 58%;
+        flex: 1 1 700px;
         box-shadow: $shadow;
         margin-bottom: 30px;
         padding: 25px;
@@ -448,18 +449,98 @@ $font-sizes: (
     }
 
     .contact {
-        width: 39%;
+        flex: 1 1 250px;
         background-color: $blanc;
         box-shadow: $shadow;
         margin-bottom: 30px;
+        padding: 25px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .footer {
+            display: flex;
+            justify-content: end;
+        }
     }
 
     .last_documents {
-        width: 100%;
+        flex: 1 1 800px;
         background-color: $blanc;
         box-shadow: $shadow;
-        height: 200px;
         margin-bottom: 30px;
+        border-radius: 20px;
+        padding: 25px;
+
+        .projects {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+
+            .project_doc_block {
+                background-color: $bleu-casse;
+                padding: 15px 15px 0;
+                flex: 1 1 50%;
+                border-radius: 10px;
+
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    h3 {
+                        font-size: 16px;
+                        color: $violet;
+                        font-weight: bold;
+                    }
+
+                    .see {
+                        height: 50px;
+                        width: 50px;
+                        background-color: $violet;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        transition: all 0.3s;
+
+                        &:hover {
+                            transition: all 0.3s;
+                            background-color: $violet-clair;
+                        }
+
+                        img {
+                            width: 40px;
+                        }
+                    }
+                }
+
+                .documents {
+                    margin-top: 25px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .document {
+                        flex: 1 1 100%;
+                        background-color: $violet;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: end;
+                        color: $blanc;
+                        border-radius: 10px;
+                        padding: 15px;
+                        margin-bottom: 15px;
+
+                        .type {
+                            display: flex;
+                            align-items: end;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -468,64 +549,16 @@ $font-sizes: (
     //PAGE GENERAL
 
     //DASHBOARD
-    .dashboard_block {
-        .last_project {
-            width: 100%;
-        }
-
-        .contact {
-            width: 100%;
-        }
-    }
+    .dashboard_block {}
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
 
     //DASHBOARD
-    .dashboard_block {
-        .last_project {
-            width: 100%;
-        }
-
-        .contact {
-            width: 100%;
-        }
-    }
+    .dashboard_block {}
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
-    //NAV ADMIN
-    .menu_admin {
-        max-width: 65px;
-    }
-
-    //PAGE GENERAL
-    .page {
-
-        .nav_admin {
-            padding: 10px;
-        }
-
-        .page_block {
-            margin-left: 126px !important;
-            margin-right: 9px;
-        }
-    }
-
-    //DASHBOARD
-    .dashboard_block {
-        .last_project {
-            width: 100%;
-        }
-
-        .contact {
-            width: 100%;
-        }
-    }
-}
-
-@media (max-width: 767px) {
 
     //NAV ADMIN
     .menu_admin {
@@ -541,6 +574,29 @@ $font-sizes: (
             .block_links {
                 .link {
                     margin: 0 7px;
+
+                    .icon {
+                        display: flex;
+                        justify-content: center;
+                        padding: 5px 0;
+                    }
+                }
+            }
+        }
+
+        .nav_footer {
+            .user_info {
+                justify-content: center;
+                margin: 0;
+            }
+
+            .link {
+                margin: 0 7px;
+
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    padding: 5px 0;
                 }
             }
         }
@@ -554,7 +610,71 @@ $font-sizes: (
         }
 
         .page_block {
-            margin-left: 126px !important;
+            margin-left: 86px !important;
+            margin-right: 9px;
+        }
+    }
+
+    //DASHBOARD
+    .dashboard_block {}
+}
+
+@media (max-width: 767px) {
+
+    //NAV ADMIN
+    .menu_admin {
+        max-width: 65px;
+        min-height: calc(100vh - 20px);
+
+        .block {
+            .small_logo {
+                img {
+                    width: 50px;
+                }
+            }
+
+            .block_links {
+                .link {
+                    margin: 0 7px;
+
+                    .icon {
+                        display: flex;
+                        justify-content: center;
+                        padding: 5px 0;
+                    }
+                }
+            }
+        }
+
+        .nav_footer {
+            margin-bottom: 10px;
+
+            .user_info {
+                justify-content: center;
+                margin: 0;
+            }
+
+            .link {
+                margin: 0 7px;
+
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+
+    //PAGE GENERAL
+    .page {
+
+        .nav_admin {
+            padding: 10px;
+        }
+
+        .page_block {
+            margin-left: 86px !important;
             margin-right: 9px;
         }
     }
@@ -562,12 +682,32 @@ $font-sizes: (
     //DASHBOARD
     .dashboard_block {
         .last_project {
-            width: 100%;
+
+            .header {
+                flex-direction: column;
+                align-items: start;
+
+                .see_project {
+                    margin: 10px 0;
+                }
+            }
+
+            .steps_block {
+                .steps {
+                    flex-direction: column;
+
+                    .step {
+                        width: 100%;
+                        margin-bottom: 15px;
+
+                        .step_color {
+                            border-radius: 50px !important;
+                        }
+                    }
+                }
+            }
         }
 
-        .contact {
-            width: 100%;
-        }
     }
 
 }

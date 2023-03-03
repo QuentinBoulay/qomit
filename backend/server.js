@@ -246,7 +246,8 @@ app.get('/users/:id/last_documents', (req, res) => {
               doc_name: doc.doc_name,
               doc_create_date: date,
               doc_typ_name: doc.doc_typ_name,
-              doc_typ_image: doc.doc_typ_image
+              doc_typ_image: doc.doc_typ_image,
+              doc_link: doc.doc_link
             }
           })
         };
