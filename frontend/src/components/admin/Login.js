@@ -30,7 +30,6 @@ function Login() {
       });
 
       const jsonData = await response.json();
-      console.log(jsonData);
 
       if (jsonData.error === 0) {
         localStorage.setItem('user_token_qomit', jsonData.use_token);
@@ -38,15 +37,12 @@ function Login() {
         navigate('/dashboard');
       }
       else {
-        console.log(jsonData.message);
         const errorDiv = document.querySelector('.error_message');
         errorDiv.textContent = jsonData.message;
       }
 
       const userToken = localStorage.getItem('user_token_qomit');
       const userId = localStorage.getItem('user_id_qomit');
-      console.log(userToken);
-      console.log(userId);
     } catch (error) {
       console.error(error);
     }

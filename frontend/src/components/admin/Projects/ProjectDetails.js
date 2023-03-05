@@ -5,11 +5,20 @@ import '../../../admin.scss';
 
 import NavAdmin from '../../admin/Templates/NavAdmin';
 
+import { API_BASE_URL, API_EP_USERS, API_EP_TOKEN } from '../../../apiConstantes';
+
+
 function ProjectDetails() {
     const activePage = "projects";
 
-    let { id } = useParams();
+    const navigate = useNavigate();
 
+    const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
+    const [checkToken, setcheckToken] = useState(null);
+
+    const [lastProject, setlastProject] = useState(null);
+
+    let { id } = useParams();
     console.log(id);
 
     return (

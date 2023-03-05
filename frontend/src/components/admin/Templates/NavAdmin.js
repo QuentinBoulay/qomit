@@ -92,7 +92,6 @@ function NavAdmin(props) {
     }
 
     const handleBurger = (menu) => {
-        console.log(menu);
         if (menu === true) {
             const blockPage = document.querySelector('.page_block');
             blockPage.style.marginLeft = "390px";

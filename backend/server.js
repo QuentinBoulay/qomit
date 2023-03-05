@@ -119,7 +119,7 @@ app.get('/users/token/:token', (req, res) => {
       result = {
         authentification: 1,
         use_token: results[0].use_token,
-        use_id: result[0].use_id
+        use_id: results[0].use_id
       };
     }
     else {
@@ -189,18 +189,21 @@ app.get('/users/:id/last_project', (req, res) => {
   connection.query(`SELECT ${fields_last_project.join(', ')} FROM projects WHERE ref_users = ? ORDER BY pro_date_start DESC LIMIT 1`, [id], (error, results) => {
     if (error) throw error;
 
-    const lastProject = results[0];
+    if (results[0]) {
+      const lastProject = results[0];
 
-    connection.query(`SELECT ${fields_last_project_states.join(', ')} FROM projects_states ps INNER JOIN states s ON ps.sta_id = s.sta_id WHERE ps.pro_id = ? ORDER BY ps.pro_sta_order`, [lastProject.pro_id], (error, results) => {
-      if (error) throw error;
+      connection.query(`SELECT ${fields_last_project_states.join(', ')} FROM projects_states ps INNER JOIN states s ON ps.sta_id = s.sta_id WHERE ps.pro_id = ? ORDER BY ps.pro_sta_order`, [lastProject.pro_id], (error, results) => {
+        if (error) throw error;
 
-      const response = {
-        lastProject: lastProject,
-        states: results
-      };
+        const response = {
+          lastProject: lastProject,
+          states: results
+        };
 
-      res.json(response);
-    });
+        res.json(response);
+      });
+    }
+
   });
 });
 
@@ -239,7 +242,7 @@ app.get('/users/:id/last_documents', (req, res) => {
           project: project,
           documents: results.map((doc) => {
             // Conversion de la date au format souhaité
-            const date = new Date(doc.doc_create_date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+            const date = new Date(doc.doc_create_date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
             // Retourne un objet avec les champs convertis
             return {
               doc_id: doc.doc_id,
@@ -283,7 +286,8 @@ const fields_projects = [
   'p.pro_name',
   'p.pro_date_start',
   'u.use_firstname',
-  'u.use_lastname'
+  'u.use_lastname',
+  'u.use_picture'
 ];
 
 app.get('/users/:id/projects', (req, res) => {
@@ -309,7 +313,7 @@ app.get('/users/:id/projects', (req, res) => {
         }
 
         // Convert date format in project object
-        const dateStart = new Date(project.pro_date_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        const dateStart = new Date(project.pro_date_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
 
         // Update project object with converted dates
         project.pro_date_start = dateStart;
@@ -372,12 +376,12 @@ app.get('/users/:user_id/projects/:project_id', (req, res) => {
     const project = results[0];
 
     if (project.pro_date_start) {
-      const dateStart = new Date(project.pro_date_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      const dateStart = new Date(project.pro_date_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
       project.pro_date_start = dateStart;
     }
 
     if (project.pro_date_online) {
-      const dateOnline = new Date(project.pro_date_online).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      const dateOnline = new Date(project.pro_date_online).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
       project.pro_date_online = dateOnline;
     }
 

@@ -8,6 +8,10 @@ import NavAdmin from '../admin/Templates/NavAdmin';
 import eyeIcon from "../../img/admin/documents/eye.svg";
 import arrowIcon from "../../img/admin/documents/arrow.svg";
 
+import documentIcon from "../../img/admin/documents/doc.svg";
+import euroIcon from "../../img/admin/documents/euro.svg";
+import screenIcon from "../../img/admin/documents/screen.svg";
+
 import { API_BASE_URL, API_EP_USERS, API_EP_LAST_PROJECT, API_EP_LAST_DOCUMENTS } from '../../apiConstantes';
 
 function Dashboard() {
@@ -50,6 +54,19 @@ function Dashboard() {
                 return { backgroundColor: '#5955F4' };
             default:
                 return {};
+        }
+    };
+
+    const getDocIcon = (doc_typ_image) => {
+        switch (doc_typ_image) {
+            case "1":
+                return euroIcon;
+            case "2":
+                return screenIcon;
+            case "3":
+                return documentIcon;
+            default:
+                return "";
         }
     };
 
@@ -125,14 +142,16 @@ function Dashboard() {
                                     <div key={project.project.pro_id} className='project_doc_block'>
                                         <div className='header'>
                                             <h3>{project.project.pro_name}</h3>
-                                            <Link className='see' to={`/documents/${project.project.pro_id}`}><img src={eyeIcon} alt='icone voir documents du projet' /></Link>
+                                            <div>
+                                                <Link className='see' to={`/documents/${project.project.pro_id}`}><img src={eyeIcon} alt='icone voir documents du projet' /></Link>
+                                            </div>
                                         </div>
                                         <div className='documents'>
                                             {project.documents.map(document => (
                                                 <div key={document.doc_id} className='document'>
                                                     <div className='type'>
                                                         <div className='image'>
-                                                            <img src={document.doc_typ_image} alt={document.doc_typ_name} />
+                                                            <img src={getDocIcon(document.doc_typ_image)} alt={document.doc_typ_name} />
                                                         </div>
                                                         <div className='text'>
                                                             <div className='type'>{document.doc_typ_name}</div>
