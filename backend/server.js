@@ -341,14 +341,15 @@ const fields_project = [
   'p.pro_link_prod',
   'p.pro_date_start',
   'p.pro_date_online',
+  'u.use_id AS user_id',
   'u.use_firstname AS user_firstname',
   'u.use_lastname AS user_lastname',
   'u.use_email AS user_email',
+  'u.use_phone AS user_phone',
   'u.use_picture AS user_picture',
   'r.use_firstname AS responsable_firstname',
   'r.use_lastname AS responsable_lastname',
   'r.use_email AS responsable_email',
-  'r.use_phone AS responsable_phone',
   'r.use_picture AS responsable_picture',
 ];
 
@@ -361,8 +362,9 @@ const fields_project_tasks = [
   't.tas_id',
   'tn.tas_nam_name',
   'u.use_firstname',
-  'u.use_firstname',
+  'u.use_lastname',
   't.tas_duration',
+  'ts.tas_sta_id',
   'ts.tas_sta_name'
 ];
 
@@ -374,6 +376,11 @@ app.get('/users/:user_id/projects/:project_id', (req, res) => {
     if (error) throw error;
 
     const project = results[0];
+
+    if (!project) {
+      res.json({ error: 1 });
+      return;
+    }
 
     if (project.pro_date_start) {
       const dateStart = new Date(project.pro_date_start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -399,7 +406,7 @@ app.get('/users/:user_id/projects/:project_id', (req, res) => {
         const tasks = results;
 
         // merge the project data with the states and tasks data
-        const data = { ...project, states, tasks };
+        const data = { ...project, states, tasks, error: 0 };
 
         res.json(data);
       });
