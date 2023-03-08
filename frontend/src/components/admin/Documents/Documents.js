@@ -12,9 +12,18 @@ import { API_BASE_URL, API_EP_USERS, API_EP_PROJECTS } from '../../../apiConstan
 function Documents() {
     const activePage = "documents";
 
+    const navigate = useNavigate();
+
+    const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
     const [userId, setUserId] = useState(localStorage.getItem('user_id_qomit'));
 
     const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        if (!userToken) {
+            navigate('/admin');
+        }
+    }, [userToken, navigate]);
 
     useEffect(() => {
         fetch(`${API_BASE_URL}${API_EP_USERS}/${userId}${API_EP_PROJECTS}`)

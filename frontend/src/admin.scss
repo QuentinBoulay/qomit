@@ -1030,6 +1030,114 @@ $font-sizes: (
     }
 }
 
+//DETAIL DOCUMENTS
+.documents_details {
+    margin-top: 30px;
+
+    .documents_list {
+        background-color: $blanc;
+        flex: 1 1 100%;
+        box-shadow: $shadow;
+        margin-bottom: 30px;
+        padding: 25px;
+        border-radius: 20px;
+
+        .filters {
+            display: flex;
+
+            .filter {
+                padding: 0px 20px 10px;
+                color: $violet;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .active {
+                border-bottom: 3px solid $violet;
+            }
+        }
+
+        .table_block {
+            display: flex;
+            flex-direction: column;
+
+            .header {
+                display: flex;
+                padding: 20px 15px 15px;
+
+                .title {
+                    font-size: 14px;
+                    color: $gris-fonce;
+                    font-weight: bold;
+                }
+
+                .name {
+                    flex: 1 1 30%;
+                }
+
+                .type {
+                    flex: 1 1 30%;
+                }
+
+                .date {
+                    flex: 1 1 25%;
+                }
+
+                .link {
+                    flex: 1 1 15%;
+                }
+            }
+
+            .table_body {
+                .task {
+                    display: flex;
+                    align-items: center;
+                    padding: 15px 15px;
+                    background-color: $bleu-casse-fonce;
+
+                    &:nth-child(2n+1) {
+                        background-color: $bleu-casse;
+                    }
+
+                    &:nth-child(1) {
+                        border-top-right-radius: 10px;
+                        border-top-left-radius: 10px;
+                    }
+
+                    &:nth-last-child(1) {
+                        border-bottom-right-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                    }
+
+                    .title {
+                        font-size: 14px;
+                        color: $noir;
+                    }
+
+                    .name {
+                        flex: 1 1 30%;
+                    }
+
+                    .type {
+                        flex: 1 1 30%;
+                    }
+
+                    .date {
+                        flex: 1 1 25%;
+                    }
+
+                    .link {
+                        flex: 1 1 15%;
+
+
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: 1200px) and (max-width: 1350px) {}
 
 @media (min-width: 992px) and (max-width: 1199px) {}
@@ -1299,6 +1407,35 @@ $font-sizes: (
         .technical_sheet {
             flex: 0 0 100% !important;
             max-width: 100%;
+        }
+    }
+
+    //DETAILS DOCUMENTS
+    .documents_details {
+        .documents_list {
+
+            .filters {
+                .filter {
+                    padding: 0px 10px 10px;
+                    font-size: 12px;
+                }
+            }
+
+            .table_block {
+                .header {
+                    .title {
+                        font-size: 10px;
+                    }
+                }
+
+                .table_body {
+                    .task {
+                        .title {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
         }
     }
 

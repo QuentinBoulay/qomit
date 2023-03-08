@@ -8,6 +8,7 @@ import Projects from './components/admin/Projects/Projects.js';
 import ProjectDetails from './components/admin/Projects/ProjectDetails.js';
 import Documents from './components/admin/Documents/Documents.js';
 import Profile from './components/admin/Profile/Profile.js';
+import DocumentsDetails from './components/admin/Documents/DocumentsDetails.js';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/:id" element={<ProjectDetails />} />
       <Route path="/documents" element={<Documents />} />
+      <Route path="/documents/:id" element={<DocumentsDetails />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

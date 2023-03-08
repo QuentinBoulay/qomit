@@ -160,7 +160,7 @@ function Dashboard() {
                                                     </div>
                                                     <div className='date'>{document.doc_create_date}</div>
                                                     <div className='link'>
-                                                        <a href={document.doc_link} target="_blank"><img src={arrowIcon} alt='icone fleche' /></a>
+                                                        <a href={document.doc_link} target="_blank" rel="noopener noreferrer"><img src={arrowIcon} alt='icone fleche' /></a>
                                                     </div>
                                                 </div>
                                             ))}

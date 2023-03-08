@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -147,12 +148,12 @@ app.put('/users/:id/password', (req, res) => {
     // Check if old password is correct
     const isMatch = await bcrypt.compare(old_password, user.use_password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Ancien mot de passe incorrect' });
+      return res.status(400).json({ error: 1, message: 'Ancien mot de passe incorrect' });
     }
 
     // Check if new password matches confirmation
     if (new_password !== confirm_password) {
-      return res.status(400).json({ message: 'Le nouveau mot de passe ne correspond pas à la confirmation' });
+      return res.status(400).json({ error: 1, message: 'Le nouveau mot de passe ne correspond pas à la confirmation' });
     }
 
     // Hash new password
@@ -162,7 +163,7 @@ app.put('/users/:id/password', (req, res) => {
     connection.query('UPDATE users SET use_password = ? WHERE use_id = ?', [hashedPassword, user_id], (error, results) => {
       if (error) throw error;
 
-      res.json({ message: 'Mot de passe mis à jour avec succès' });
+      res.json({ error: 0, message: 'Mot de passe mis à jour avec succès' });
     });
   });
 });
@@ -419,7 +420,15 @@ app.get('/users/:user_id/projects/:project_id', (req, res) => {
 
 
 
-
+const fields_document_details = [
+  'p.pro_name',
+  'd.doc_id',
+  'd.doc_name',
+  'd.doc_create_date',
+  'd.doc_link',
+  'dt.doc_typ_name',
+  'dt.doc_typ_image'
+];
 
 //DOCUMENTS
 //get all documents from 1 project
@@ -430,29 +439,48 @@ app.get('/users/:user_id/projects/:project_id/documents', (req, res) => {
   const project_id = req.params.project_id;
 
   //connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types WHERE pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [project_id], (error, results) => {
-  connection.query(`SELECT ${fields_document.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types INNER JOIN projects p ON pd.pro_id = p.pro_id WHERE p.ref_users = ? AND pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [user_id, project_id], (error, results) => {
-    if (error) throw error;
+  connection.query(`SELECT ${fields_document_details.join(', ')} FROM documents d INNER JOIN projects_documents pd ON d.doc_id = pd.doc_id INNER JOIN documents_types dt ON dt.doc_typ_id = d.ref_types INNER JOIN projects p ON pd.pro_id = p.pro_id WHERE p.ref_users = ? AND pd.pro_id = ? ORDER BY d.doc_create_date DESC`, [user_id, project_id], (error, results) => {
+    if (error) {
+      console.error(error);
+      res.json({ error: 1 });
+      return;
+    }
+
+    if (!results.length) {
+      res.json({ error: 1 });
+      return;
+    }
+
+    const projectName = results[0].pro_name;
 
     const groupedResults = results.reduce((acc, curr) => {
-      const typeIndex = acc.findIndex((obj) => obj.doc_typ_name === curr.doc_typ_name);
+      const formattedDate = new Date(curr.doc_create_date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+
+      const formattedDoc = { ...curr, doc_create_date: formattedDate };
+
+      const typeIndex = acc.findIndex((obj) => obj.doc_typ_name === formattedDoc.doc_typ_name);
 
       if (typeIndex === -1) {
         acc.push({
-          doc_typ_name: curr.doc_typ_name,
-          documents: [curr]
+          doc_typ_name: formattedDoc.doc_typ_name,
+          documents: [formattedDoc]
         });
       } else {
-        acc[typeIndex].documents.push(curr);
+        acc[typeIndex].documents.push(formattedDoc);
       }
 
       return acc;
     }, []);
 
-    // Add "tout" category that includes all documents
-    const allDocuments = results.map((result) => ({ ...result, doc_typ_name: "Tout" }));
-    groupedResults.unshift({ doc_typ_name: "tout", documents: allDocuments });
+    const allDocuments = results.map((result) => {
+      const formattedDate = new Date(result.doc_create_date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
 
-    res.json(groupedResults);
+      return { ...result, doc_typ_name: result.doc_typ_name, doc_create_date: formattedDate };
+    });
+
+    groupedResults.unshift({ doc_typ_name: "Tout", documents: allDocuments });
+
+    res.json({ error: 0, pro_name: projectName, data: groupedResults });
   });
 });
 
