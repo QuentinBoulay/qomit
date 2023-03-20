@@ -8,7 +8,7 @@ import Companies from "./Companies/Companies.js";
 
 function Home() {
   return (
-    <>
+    <div className="body-home">
       <Nav />
       <Hero />
       <Services />
@@ -16,7 +16,7 @@ function Home() {
       <Devis />
       <Cases />
       <Companies />
-    </>
+    </div>
   );
 }
 
