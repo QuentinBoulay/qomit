@@ -60,8 +60,8 @@ function Nav() {
 
           <nav
             className={`mobile-menu ${isActive
-                ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
-                : ""
+              ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
+              : ""
               }`}
           >
             <ul className="list-unstyled">
@@ -102,7 +102,7 @@ function Nav() {
             <Link className="d-none d-lg-block font-size-14" to="/admin/posts">
               Contact
             </Link>
-            <Link className="font-size-14" to="/admin/posts">
+            <Link className="font-size-14" to="/admin">
               <li className="d-none d-lg-block ml-4 client-place button">
                 Espace client
               </li>
