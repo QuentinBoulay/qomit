@@ -19,8 +19,8 @@ function Dashboard() {
 
     const navigate = useNavigate();
 
-    const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
-    const [userId, setUserId] = useState(localStorage.getItem('user_id_qomit'));
+    const [userToken] = useState(localStorage.getItem('user_token_qomit'));
+    const [userId] = useState(localStorage.getItem('user_id_qomit'));
 
     const [lastProject, setlastProject] = useState(null);
     const [lastDocuments, setlastDocuments] = useState(null);
@@ -132,7 +132,7 @@ function Dashboard() {
                                 <p>Une panne, une question, contactez le support technique de QOMIT par mail</p>
                             </div>
                             <div className='footer'>
-                                <a className='click_button' href='#'>Envoyer un mail</a>
+                                <a className='click_button' href='mailto:n.oubah@qomit.fr'>Envoyer un mail</a>
                             </div>
                         </div>
                         <div className='last_documents'>

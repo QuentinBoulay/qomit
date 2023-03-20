@@ -14,8 +14,8 @@ function Projects() {
 
     const navigate = useNavigate();
 
-    const [userId, setUserId] = useState(localStorage.getItem('user_id_qomit'));
-    const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
+    const [userId] = useState(localStorage.getItem('user_id_qomit'));
+    const [userToken] = useState(localStorage.getItem('user_token_qomit'));
 
     const [projects, setProjects] = useState([]);
 

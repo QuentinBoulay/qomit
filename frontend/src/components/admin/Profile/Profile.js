@@ -12,8 +12,8 @@ function Profile() {
 
     const navigate = useNavigate();
 
-    const [userToken, setUserToken] = useState(localStorage.getItem('user_token_qomit'));
-    const [userId, setUserId] = useState(localStorage.getItem('user_id_qomit'));
+    const [userToken] = useState(localStorage.getItem('user_token_qomit'));
+    const [userId] = useState(localStorage.getItem('user_id_qomit'));
 
     const [user, setUser] = useState(null);
 
@@ -66,6 +66,21 @@ function Profile() {
         }
     };
 
+    if (!user) {
+        return (
+            <div className='body-admin'>
+                <div className='page'>
+                    <div className='nav_admin'>
+                        <NavAdmin activeLink={activePage} />
+                    </div>
+                    <div className='page_block'>
+                        <h1>Mon profil</h1>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className='body-admin'>
             <div className='page'>
@@ -76,64 +91,66 @@ function Profile() {
                     <h1>Mon profil</h1>
                     <div className='subtitle'>Gérer les paramètres de votre profil</div>
                     <div className='my_profil'>
-                        <div className='picture'>
-                            <div className='block_picture'>
-                                <img src={user.use_picture} alt={user.use_firstname} />
-                            </div>
-                        </div>
-                        <div className='informations'>
-                            <div className='profile'>
-                                <h2>Modifier mon profil</h2>
-                                <div className='company'>
-                                    <div className='input_block'>
-                                        <label>Entreprise</label>
-                                        <input value={user.com_name} disabled />
-                                    </div>
-                                </div>
-                                <div className='personal'>
-                                    <div className='input_block'>
-                                        <label>Prénom</label>
-                                        <input value={user.use_firstname} disabled />
-                                    </div>
-                                    <div className='input_block'>
-                                        <label>Nom</label>
-                                        <input value={user.use_lastname} disabled />
-                                    </div>
-                                    <div className='input_block'>
-                                        <label>Email</label>
-                                        <input value={user.use_email} disabled />
-                                    </div>
-                                    <div className='input_block'>
-                                        <label>Téléphone</label>
-                                        <input value={user.use_phone} disabled />
-                                    </div>
+                        <div className='profil_block'>
+                            <div className='picture'>
+                                <div className='block_picture'>
+                                    <img src={user.use_picture} alt={user.use_firstname} />
                                 </div>
                             </div>
-                            <div className='password'>
-                                <h2>Changer mon mot de passe</h2>
-                                <form onSubmit={handleSubmit}>
-                                    <div className='actual'>
+                            <div className='informations'>
+                                <div className='profile'>
+                                    <h2>Modifier mon profil</h2>
+                                    <div className='company'>
                                         <div className='input_block'>
-                                            <label htmlFor="actual_password">Mot de passe actuel</label>
-                                            <input type="password" id="actual_password" value={actualPassword} onChange={(e) => setActualPassword(e.target.value)} required />
+                                            <label>Entreprise</label>
+                                            <input value={user.com_name} disabled />
                                         </div>
                                     </div>
-                                    <div className='new'>
+                                    <div className='personal'>
                                         <div className='input_block'>
-                                            <label htmlFor="new_password">Nouveau mot de passe</label>
-                                            <input type="password" id="new_password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+                                            <label>Prénom</label>
+                                            <input value={user.use_firstname} disabled />
                                         </div>
                                         <div className='input_block'>
-                                            <label htmlFor="confirm_password">Nouveau mot de passe</label>
-                                            <input type="password" id="confirm_password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                                            <label>Nom</label>
+                                            <input value={user.use_lastname} disabled />
+                                        </div>
+                                        <div className='input_block'>
+                                            <label>Email</label>
+                                            <input value={user.use_email} disabled />
+                                        </div>
+                                        <div className='input_block'>
+                                            <label>Téléphone</label>
+                                            <input value={user.use_phone} disabled />
                                         </div>
                                     </div>
-                                    <div className='save'>
-                                        <button type="submit">Enregistrer</button>
-                                    </div>
-                                </form>
+                                </div>
+                                <div className='password'>
+                                    <h2>Changer mon mot de passe</h2>
+                                    <form onSubmit={handleSubmit} className="password_block">
+                                        <div className='actual'>
+                                            <div className='input_block'>
+                                                <label htmlFor="actual_password">Mot de passe actuel</label>
+                                                <input type="password" id="actual_password" value={actualPassword} onChange={(e) => setActualPassword(e.target.value)} required />
+                                            </div>
+                                        </div>
+                                        <div className='new'>
+                                            <div className='input_block'>
+                                                <label htmlFor="new_password">Nouveau mot de passe</label>
+                                                <input type="password" id="new_password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+                                            </div>
+                                            <div className='input_block'>
+                                                <label htmlFor="confirm_password">Nouveau mot de passe</label>
+                                                <input type="password" id="confirm_password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                                            </div>
+                                        </div>
+                                        <div className='save'>
+                                            <button type="submit">Enregistrer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                {responseMessage && <div>{responseMessage}</div>}
                             </div>
-                            {responseMessage && <div>{responseMessage}</div>}
                         </div>
                     </div>
                 </div>
