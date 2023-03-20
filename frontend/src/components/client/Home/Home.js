@@ -11,7 +11,7 @@ import BrandSlider from "./Brandslider.js";
 
 function Home() {
   return (
-    <>
+    <div className="body-home">
       <Nav />
       <Hero />
       <Services />

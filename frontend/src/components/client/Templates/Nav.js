@@ -45,28 +45,24 @@ function Nav() {
             onClick={handleClick}
           >
             <div
-              className={`mobile-nav-button__line ${
-                isActive ? "mobile-nav-button__line--1 line_white" : ""
-              }`}
+              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--1 line_white" : ""
+                }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${
-                isActive ? "mobile-nav-button__line--2 line_white" : ""
-              }`}
+              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--2 line_white" : ""
+                }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${
-                isActive ? "mobile-nav-button__line--3 line_white" : ""
-              }`}
+              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--3 line_white" : ""
+                }`}
             ></div>
           </div>
 
           <nav
-            className={`mobile-menu ${
-              isActive
+            className={`mobile-menu ${isActive
                 ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
                 : ""
-            }`}
+              }`}
           >
             <ul className="list-unstyled">
               <li className="mr-1 font-size-48 active">
@@ -97,7 +93,7 @@ function Nav() {
               </li>
               <li className="mt-5 text-center font-size-28">
                 <div className="client-place-burger d-inline-block">
-                  <Link to="/admin/posts">Espace client</Link>
+                  <Link to="/admin">Espace client</Link>
                 </div>
               </li>
             </ul>
