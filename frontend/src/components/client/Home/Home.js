@@ -22,7 +22,7 @@ function Home() {
       <BrandSlider />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }
 

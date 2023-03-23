@@ -45,24 +45,28 @@ function Nav() {
             onClick={handleClick}
           >
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--1 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--1 line_white" : ""
+              }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--2 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--2 line_white" : ""
+              }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--3 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--3 line_white" : ""
+              }`}
             ></div>
           </div>
 
           <nav
-            className={`mobile-menu ${isActive
-              ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
-              : ""
-              }`}
+            className={`mobile-menu ${
+              isActive
+                ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
+                : ""
+            }`}
           >
             <ul className="list-unstyled">
               <li className="mr-1 font-size-48 active">
@@ -87,7 +91,7 @@ function Nav() {
               </li>
 
               <li className="mt-5 font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <Link className="d-inline-block" to="/contact">
                   Contact
                 </Link>
               </li>
@@ -99,7 +103,7 @@ function Nav() {
             </ul>
           </nav>
           <div className="contact-container p-0 d-flex justify-content-end align-items-center col-12 col-lg-3">
-            <Link className="d-none d-lg-block font-size-14" to="/admin/posts">
+            <Link className="d-none d-lg-block font-size-14" to="/contact">
               Contact
             </Link>
             <Link className="font-size-14" to="/admin">
