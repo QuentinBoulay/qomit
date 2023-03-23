@@ -8,6 +8,7 @@ import Companies from "./Companies/Companies.js";
 import Contact from "../Templates/Contact.js";
 import Footer from "../Templates/Footer.js";
 import BrandSlider from "./Brandslider.js";
+import HelpForm from "../HelpForm.js";
 
 function Home() {
   return (

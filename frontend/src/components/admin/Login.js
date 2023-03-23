@@ -41,8 +41,8 @@ function Login() {
         errorDiv.textContent = jsonData.message;
       }
 
-      const userToken = localStorage.getItem('user_token_qomit');
-      const userId = localStorage.getItem('user_id_qomit');
+      //const userToken = localStorage.getItem('user_token_qomit');
+      //const userId = localStorage.getItem('user_id_qomit');
     } catch (error) {
       console.error(error);
     }
