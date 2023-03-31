@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../../img/logo.png";
 
 function Nav() {
@@ -14,29 +14,29 @@ function Nav() {
   };
 
   return (
-    <div className="container-fluid">
+      <>
       <nav>
         <div className="row py-4 px-5 align-items-center">
           <div className="logo-container p-0 d-flex justify-content-start col-12 col-lg-3 col-md-6 col-sm-6">
-            <Link to="/">
+            <NavLink to="/">
               <img src={logo} alt="logo QOMIT"></img>
-            </Link>
+            </NavLink>
           </div>
           <div className="menu-container p-0 col-12 col-lg-6 col-md-6 d-none d-lg-block">
             <ul className="list-unstyled d-flex justify-content-center">
               <div className="d-flex">
-                <Link className="active" to="/admin/posts">
+                <NavLink exact activeClassName="active" to="/">
                   <li className="mr-1 font-size-14">Accueil</li>
-                </Link>
-                <Link to="/admin/posts">
+                </NavLink>
+                <NavLink activeClassName="active" to="/admin/posts">
                   <li className="mr-1 font-size-14">Services</li>
-                </Link>
-                <Link to="/admin/posts">
+                </NavLink>
+                <NavLink activeClassName="active" to="/agence">
                   <li className="mr-1 font-size-14">L'agence</li>
-                </Link>
-                <Link to="/admin/posts">
+                </NavLink>
+                <NavLink activeClassName="active" to="/admin/posts">
                   <li className="font-size-14">Devis</li>
-                </Link>
+                </NavLink>
               </div>
             </ul>
           </div>
@@ -70,51 +70,51 @@ function Nav() {
           >
             <ul className="list-unstyled">
               <li className="mr-1 font-size-48 active">
-                <Link className="d-inline-block active" to="/admin/posts">
+                <NavLink className="d-inline-block active" to="/">
                   Accueil
-                </Link>
+                </NavLink>
               </li>
               <li className="mr-1 font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <NavLink className="d-inline-block" to="/admin/posts">
                   Services
-                </Link>
+                </NavLink>
               </li>
               <li className="mr-1 font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <NavLink className="d-inline-block" to="/agence">
                   L'agence
-                </Link>
+                </NavLink>
               </li>
               <li className="font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <NavLink className="d-inline-block" to="/admin/posts">
                   Devis
-                </Link>
+                </NavLink>
               </li>
 
               <li className="mt-5 font-size-48">
-                <Link className="d-inline-block" to="/contact">
+                <NavLink className="d-inline-block" to="/contact">
                   Contact
-                </Link>
+                </NavLink>
               </li>
               <li className="mt-5 text-center font-size-28">
                 <div className="client-place-burger d-inline-block">
-                  <Link to="/admin">Espace client</Link>
+                  <NavLink to="/admin">Espace client</NavLink>
                 </div>
               </li>
             </ul>
           </nav>
           <div className="contact-container p-0 d-flex justify-content-end align-items-center col-12 col-lg-3">
-            <Link className="d-none d-lg-block font-size-14" to="/contact">
+            <NavLink className="d-none d-lg-block font-size-14" to="/contact">
               Contact
-            </Link>
-            <Link className="font-size-14" to="/admin">
+            </NavLink>
+            <NavLink className="font-size-14" to="/admin">
               <li className="d-none d-lg-block ml-4 client-place button">
                 Espace client
               </li>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>
-    </div>
+      </>
   );
 }
 

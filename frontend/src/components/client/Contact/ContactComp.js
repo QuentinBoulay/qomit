@@ -37,7 +37,7 @@ function ContactComp() {
             </label>
           </div>
           <div className="row">
-            <button className="purple-button d-flex justify-content-between">
+            <button className="purple-button col-xs-12 d-flex justify-content-between">
               Envoyer
               <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
             </button>

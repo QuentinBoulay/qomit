@@ -1,4 +1,4 @@
-.body-home {
+.body-home, .body-agence {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   font-family: "Poppins", sans-serif;
@@ -585,8 +585,128 @@ a {
 }
 
 .form-container button {
-  width: 10%;
+  width: 200px;
 }
+
+// PAGE AGENCE
+
+.hero-container-agence {
+  padding: 150px 48px 200px 48px;
+}
+
+.scroll-down {
+  margin: 50px 0 0 0;
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  float: right;
+}
+
+.scroll-down:hover {
+  background-color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  svg path {
+    fill: white;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.about-agence-container {
+  margin: 0 48px 100px 48px;
+  padding: 50px;
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+}
+
+.card-container {
+  background-color: #000;
+  margin: 0 48px;
+  padding: 30px;
+  border-radius: 30px;
+  color: white;
+}
+
+.card-container .tag {
+  text-align: center;
+}
+
+.card-container .tag p {
+  padding: 10px 50px;
+  background-color: white;
+  color: #000;
+  border-radius: 30px;
+}
+
+.team-container {
+  background-color: #242424;
+  border-radius: 30px;
+  padding: 50px;
+}
+
+.team-container .presentation {
+  background-color: #ffe8d3;
+  padding: 50px;
+  border-radius: 30px;
+  color: #000;
+}
+
+.card-container .tag p {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.card-container h2 {
+  padding: 0 200px 50px 200px;
+}
+
+.team-container h3 {
+  margin: 0 0 200px 0;
+}
+
+.team-container .custom-arrows .custom-arrow svg path {
+  fill: white;
+}
+
+.team-container .custom-arrows .custom-arrow {
+  border: 1px solid white;
+}
+
+.insights-container {
+  padding: 100px 48px;
+}
+
+.insights-container h2 {
+  margin: 0 0 100px 0;
+}
+
+.insights-container h2 span {
+  color: $violet;
+}
+
+.insights .icon-container {
+  padding: 50px;
+  display: inline-block;
+  margin: 0;
+  border-radius: 100px;
+  box-shadow: 15px 5px 34px -2px rgba(0, 0, 0, 0.25);
+}
+
+.insights .col p:nth-child(2) {
+  font-weight: 600;
+}
+
+.insights .col p:nth-child(3) {
+  font-weight: 600;
+  color: $violet;
+}
+
+.insights-container p {
+  margin: 0 !important;
+} 
 
 // MEDIA QUERIES
 
@@ -714,9 +834,56 @@ a {
   .checkbox-text {
     margin: 0 0 0 30px;
   }
+
+  .scroll-down {
+    width: 70px;
+    height: 70px;
+  }
+
+  .scroll-down svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .card-container h2 {
+    padding: 0;
+    font-size: 42px !important;
+  }
+
+  .team-container {
+    padding: 30px;
+  }
+
+  .team-container p {
+    font-size: 16px !important;
+  }
+
+  .presentation img {
+    width: 100px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .card-container h2 {
+    padding: 0;
+    font-size: 55px !important;
+  }
+
+  .team-container h3 {
+    font-size: 34px !important;
+    margin: 0 0 100px 0;
+  }
 }
 
 @media (max-width: 1000px) {
+  .card-container h2 {
+    padding: 0;
+  }
+
+  .custom-arrows {
+    margin: 0 0 50px 0;
+  }
   .devis-container lottie-player {
     width: 200px !important;
     height: 200px !important;

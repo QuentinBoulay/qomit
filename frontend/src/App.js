@@ -2,7 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./components/client/Home/Home.js";
-import ContactComp from "./components/client/Contact/ContactComp.js";
+import Agence from "./components/client/Agence/AgenceComp.js";
+import Contact from "./components/client/Contact/ContactComp.js";
 import Login from "./components/admin/Login.js";
 import Dashboard from "./components/admin/Dashboard.js";
 import Projects from "./components/admin/Projects/Projects.js";
@@ -15,7 +16,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/contact" element={<ContactComp />} />
+      <Route path="/agence" element={<Agence />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/admin" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/projects" element={<Projects />} />
