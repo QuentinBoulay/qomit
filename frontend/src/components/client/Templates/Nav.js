@@ -34,7 +34,7 @@ function Nav() {
                 <NavLink activeClassName="active" to="/agence">
                   <li className="font-size-14">L'agence</li>
                 </NavLink>
-                <NavLink activeClassName="active" to="/admin/posts">
+                <NavLink activeClassName="active" to="/devis">
                   <li className="font-size-14">Devis</li>
                 </NavLink>
               </div>
@@ -85,7 +85,7 @@ function Nav() {
                 </NavLink>
               </li>
               <li className="font-size-48">
-                <NavLink className="d-inline-block" to="/admin/posts">
+                <NavLink className="d-inline-block" to="/devis">
                   Devis
                 </NavLink>
               </li>

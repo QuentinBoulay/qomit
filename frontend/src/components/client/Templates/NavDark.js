@@ -25,16 +25,16 @@ function Nav() {
           <div className="menu-container p-0 col-12 col-lg-6 col-md-6 d-none d-lg-block">
             <ul className="list-unstyled d-flex justify-content-center">
               <div className="d-flex">
-                <Link className="active" to="/admin/posts">
+                <Link className="active" to="/">
                   <li className="mr-1 font-size-14">Accueil</li>
                 </Link>
                 <Link to="/admin/posts">
                   <li className="mr-1 font-size-14">Services</li>
                 </Link>
-                <Link to="/admin/posts">
+                <Link to="/agence">
                   <li className="mr-1 font-size-14">L'agence</li>
                 </Link>
-                <Link to="/admin/posts">
+                <Link to="/devis">
                   <li className="font-size-14">Devis</li>
                 </Link>
               </div>
@@ -45,28 +45,32 @@ function Nav() {
             onClick={handleClick}
           >
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--1 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--1 line_white" : ""
+              }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--2 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--2 line_white" : ""
+              }`}
             ></div>
             <div
-              className={`mobile-nav-button__line ${isActive ? "mobile-nav-button__line--3 line_white" : ""
-                }`}
+              className={`mobile-nav-button__line ${
+                isActive ? "mobile-nav-button__line--3 line_white" : ""
+              }`}
             ></div>
           </div>
 
           <nav
-            className={`mobile-menu ${isActive
+            className={`mobile-menu ${
+              isActive
                 ? "mobile-menu--open d-md-block d-sm-block d-xs-block"
                 : ""
-              }`}
+            }`}
           >
             <ul className="list-unstyled">
               <li className="mr-1 font-size-48 active">
-                <Link className="d-inline-block active" to="/admin/posts">
+                <Link className="d-inline-block active" to="/">
                   Accueil
                 </Link>
               </li>
@@ -76,12 +80,12 @@ function Nav() {
                 </Link>
               </li>
               <li className="mr-1 font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <Link className="d-inline-block" to="/agence">
                   L'agence
                 </Link>
               </li>
               <li className="font-size-48">
-                <Link className="d-inline-block" to="/admin/posts">
+                <Link className="d-inline-block" to="/devis">
                   Devis
                 </Link>
               </li>

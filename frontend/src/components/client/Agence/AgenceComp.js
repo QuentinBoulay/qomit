@@ -168,7 +168,7 @@ function AgenceComp() {
 
         <div ref={ref} className="insights">
           <div className="row">
-            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
+            <div className="col-md col-12 text-center">
               <div className="icon-container mb-5">
                 <svg
                   width="96"
@@ -202,7 +202,7 @@ function AgenceComp() {
               />
               <p className="font-size-24">par rapport à 2022</p>
             </div>
-            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
+            <div className="col-md col-12 text-center">
               <div className="icon-container mb-5">
                 <svg
                   width="92"
@@ -235,7 +235,7 @@ function AgenceComp() {
               />
               <p className="font-size-24">en 2023</p>
             </div>
-            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
+            <div className="col-md col-12 text-center">
               <div className="icon-container mb-5">
                 <svg
                   width="85"

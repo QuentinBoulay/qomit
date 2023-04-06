@@ -1,32 +1,58 @@
 import logo from "../../../img/logo-blanc.png";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
-    const currentYear = new Date().getFullYear();
-    return (
+  const currentYear = new Date().getFullYear();
+  return (
     <footer className="container-footer-section">
-        <div className="row">
-            <div className="col-footer-section-logo col-12 col-md-6 col-lg-3">
-                <img src={logo} alt="Logo" className="img-footer-section mb-3" />
-                <p>Mentions légales - © {currentYear} QOMIT</p>
-            </div>
-            <div className="col-footer-section col-6 col-md-3 col-lg-2">
-                <ul className="list-unstyled">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">L'agence</a></li>
-                </ul>
-            </div>
-            <div className="col-footer-section col-6 col-md-3 col-lg-2">
-                <ul className="list-unstyled">
-                    <li><a href="#">Devis</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Espace client</a></li>
-                </ul>
-            </div>
-            <div className="col-12 col-md-12 col-lg-5"></div>
+      <div className="row">
+        <div className="col-footer-section-logo col-12 col-md-6 col-lg-3">
+          <NavLink to="/">
+            <img src={logo} alt="Logo" className="img-footer-section mb-3" />
+          </NavLink>
+          <p>Mentions légales - © {currentYear} QOMIT</p>
         </div>
+        <div className="col-footer-section col-6 col-md-3 col-lg-2">
+          <ul className="list-unstyled">
+            <li>
+              <NavLink activeClassName="active-footer" to="/">
+                Accueil
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active-footer" to="/services">
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active-footer" to="/agence">
+                L'agence
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <div className="col-footer-section col-6 col-md-3 col-lg-2">
+          <ul className="list-unstyled">
+            <li>
+              <NavLink exact activeClassName="active-footer" to="/devis">
+                Devis
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active-footer" to="/contact">
+                Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active-footer" to="/">
+                Espace client
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </footer>
-    );
+  );
 }
 
 export default Footer;

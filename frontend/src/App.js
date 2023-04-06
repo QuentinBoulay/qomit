@@ -1,6 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/client/Home/Home.js";
+import Typeform from "./components/client/Typeform/Typeform.js";
+import Estimate from "./components/client/Estimate/Estimate.js";
 import Agence from "./components/client/Agence/AgenceComp.js";
 import Contact from "./components/client/Contact/ContactComp.js";
 import Login from "./components/admin/Login.js";
@@ -15,6 +17,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/devis" element={<Estimate />} />
+      <Route path="/devis/typeform" element={<Typeform />} />
       <Route path="/agence" element={<Agence />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/admin" element={<Login />} />

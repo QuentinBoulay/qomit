@@ -3,7 +3,8 @@ html {
 }
 
 .body-home,
-.body-agence {
+.body-agence,
+.body-contact {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   font-family: "Poppins", sans-serif;
@@ -148,6 +149,11 @@ a {
 .menu-container .active {
   background-color: $violet;
   color: white;
+}
+
+.container-footer-section ul li a.active-footer {
+  color: $violet !important;
+  background-color: red !important;
 }
 
 .contact-container a:hover,
@@ -571,22 +577,19 @@ a {
 
 .contact-section-container {
   border-radius: 50px 50px 0px 0px;
-  padding: 50px 0 50px 100px;
+  padding: 50px 50px 50px 100px;
   background-color: $violet;
 }
 
-.col-contact-section {
-  background-image: url("img/contact-circle-background.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position-x: 50%;
-  text-align: center;
-  padding: 120px 15px 120px 15px;
-  margin: 0 !important;
+.col-contact-section .contact-button {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 100%;
 }
 
-.col-contact-section img {
-  width: 200px !important;
+.col-contact-section .contact-button img {
+  width: 50px !important;
 }
 
 .title-white {
@@ -867,9 +870,21 @@ a {
   margin: 0 !important;
 }
 
+// PAGE TYPEFORM
+
+.typeform-container {
+  padding: 100px 50px;
+}
+
+.typeform-container .row div:nth-of-type(1) h2 {
+  margin: 0 0 50px 0;
+  font-weight: 400;
+  color: $violet;
+}
+
 // MEDIA QUERIES
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   h1 {
     font-size: 3em !important;
   }
@@ -1020,9 +1035,7 @@ a {
   .presentation img {
     width: 100px;
   }
-}
 
-@media (max-width: 768px) {
   .card-container .tag p {
     padding: 10px 25px;
     font-size: 14px !important;
@@ -1070,24 +1083,32 @@ a {
     height: 60px;
   }
 
-  .insights-container .row p {
+  .insights-container {
+    padding: 100px 20px;
+  }
+
+  .insights-container .row div p {
     font-size: 28px !important;
   }
 
-  .insights-container .row p:nth-of-type(2) {
+  .insights-container .row div p:nth-of-type(2) {
     font-size: 42px !important;
   }
 
-  .insights-container .row p:nth-of-type(3) {
+  .insights-container .row div p:nth-of-type(3) {
     font-size: 24px !important;
   }
 
-  .insights-container .row .col {
+  .insights-container .row div {
     margin: 0 0 50px 0;
   }
 
   .sticky-container h2 {
     font-size: 40px !important;
+  }
+
+  .sticky-container h3 {
+    font-size: 32px !important;
   }
 
   .sticky-container section {
@@ -1097,6 +1118,41 @@ a {
 
   .sticky-container section:not(:first-child) {
     padding: 25px 34px 25px 25px;
+  }
+
+  .card img:nth-of-type(1) {
+    width: 80px;
+  }
+
+  .card h3 {
+    font-size: 16px !important;
+  }
+
+  .card p {
+    font-size: 12px !important;
+  }
+
+  .custom-arrow {
+    width: 70px;
+    height: 70px;
+  }
+
+  .custom-arrow svg {
+    width: 17px;
+    height: 19px;
+  }
+
+  span.ticker__text {
+    font-size: 62px !important;
+  }
+
+  .card-container {
+    margin: 0 20px;
+  }
+
+  .col-contact-section .contact-button {
+    width: 250px;
+    height: 250px;
   }
 }
 
