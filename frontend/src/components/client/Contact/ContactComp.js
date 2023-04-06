@@ -1,7 +1,9 @@
+import NavDark from "../Templates/NavDark"
 import Contact from "../Templates/Contact.js";
 import Footer from "../Templates/Footer.js";
 import emailjs from "emailjs-com";
 import { useState } from "react";
+import HeroContact from "./HeroContact";
 
 function ContactComp() {
   const [showNotification, setShowNotification] = useState(false);
@@ -55,6 +57,8 @@ function ContactComp() {
   return (
     <>
       <div className="body-contact">
+        <NavDark />
+        <HeroContact />
         {showNotification && (
           <div className={`notification ${notificationType}`}>
             <p>{notificationMessage}</p>
