@@ -4,7 +4,7 @@ html {
 
 .body-home,
 .body-agence,
-.body-contact {
+.body-contact, .body-estimate {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   font-family: "Poppins", sans-serif;
@@ -903,7 +903,7 @@ a {
   font-weight: 600;
 }
 
-.insights .col span {
+.insights div span {
   font-weight: 600;
   color: $violet;
 }
@@ -928,7 +928,7 @@ a {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 3em !important;
+    font-size: 2.5em !important;
   }
 
   .hero {
@@ -964,10 +964,12 @@ a {
     margin: 60px 0 0 0;
   }
 
-  .services h2,
-  .col-title h2,
-  .companies-container h2 {
+  .services h2, .companies-container h2 {
     font-size: 2.5em !important;
+  }
+
+  .col-title h2{
+    font-size: 1.5em !important;
   }
 
   .input-container h3 {
@@ -984,6 +986,10 @@ a {
 
   .devis-container {
     padding: 60px 50px 250px 50px;
+  }
+
+  .devis-container h2 {
+    font-size: 1.5em !important;
   }
 
   .nos-realisations-container {
@@ -1126,15 +1132,15 @@ a {
   }
 
   .insights-container .row div p {
-    font-size: 28px !important;
+    font-size: 24px !important;
+  }
+
+  .insights div span {
+font-size: 40px !important;
   }
 
   .insights-container .row div p:nth-of-type(2) {
-    font-size: 42px !important;
-  }
-
-  .insights-container .row div p:nth-of-type(3) {
-    font-size: 24px !important;
+    font-size: 22px !important;
   }
 
   .insights-container .row div {
