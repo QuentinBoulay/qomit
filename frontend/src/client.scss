@@ -4,7 +4,9 @@ html {
 
 .body-home,
 .body-agence,
-.body-contact, .body-estimate {
+.body-contact, 
+.body-estimate,
+.body-services {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   font-family: "Poppins", sans-serif;
@@ -281,10 +283,9 @@ a {
 // HERO DARK
 
 .hero-dark {
-  padding: 50px 0 0 70px;
+  padding: 150px 0 200px 70px;
   background-color: black;
   color: white;
-  height: 50vh;
   border-radius: 0 0 50px 50px;
 }
 
@@ -532,7 +533,7 @@ a {
 .project-idea-col-2 {
   padding: 50px 40px;
   border-radius: 50px;
-  width: 49%;
+  width: 48%;
 }
 .project-idea-col-1 {
   background-color: #faf9f6;
@@ -794,7 +795,7 @@ a {
 
 // PAGE AGENCE
 
-.hero-container-agence {
+.hero-container-agence,.hero-container-services {
   padding: 150px 48px 200px 48px;
 }
 
@@ -1198,6 +1199,18 @@ font-size: 40px !important;
     width: 250px;
     height: 250px;
   }
+
+  .project-idea-col-1, .project-idea-col-2 {
+    width: 97%;
+  }
+
+  .project-idea-button-2, .project-idea-button-1 {
+    padding: 15px 100px;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 50px;
+  }
+
 }
 
 @media (max-width: 1000px) {

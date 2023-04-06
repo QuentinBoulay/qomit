@@ -12,11 +12,13 @@ import ProjectDetails from "./components/admin/Projects/ProjectDetails.js";
 import Documents from "./components/admin/Documents/Documents.js";
 import Profile from "./components/admin/Profile/Profile.js";
 import DocumentsDetails from "./components/admin/Documents/DocumentsDetails.js";
+import ServicesPage from "./components/client/Services/ServicesPage.js";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/services" element={<ServicesPage />} />
       <Route path="/devis" element={<Estimate />} />
       <Route path="/devis/typeform" element={<Typeform />} />
       <Route path="/agence" element={<Agence />} />
