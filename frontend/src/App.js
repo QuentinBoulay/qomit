@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Home from "./components/client/Home/Home.js";
 import Agence from "./components/client/Agence/AgenceComp.js";
 import Contact from "./components/client/Contact/ContactComp.js";
