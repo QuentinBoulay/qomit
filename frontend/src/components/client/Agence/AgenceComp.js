@@ -6,9 +6,10 @@ import nadir from "../../../img/nadir.png";
 import quentin from "../../../img/quentin.png";
 import adrien from "../../../img/adrien.png";
 import maxime from "../../../img/maxime.png";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 function AgenceComp() {
-
   const [activeIndex, setActiveIndex] = useState(0); // Ajouter l'état actif pour le slider
   const [teamMembers, setTeamMembers] = useState([
     {
@@ -18,18 +19,18 @@ function AgenceComp() {
         "J'ai toujours voulu lancer ma propre agence. Qomit c'est tout simplement un accompagnement personnalisé.",
     },
     {
-      name: "Quentin Durand - CTO",
+      name: "Quentin Boulay - CTO",
       img: quentin,
       quote: "Je suis passionné par les technologies du web depuis toujours.",
     },
     {
-      name: "Adrien Michel - Développeur front-end",
+      name: "Adrien Rossignol - Développeur front-end",
       img: adrien,
       quote:
         "Je suis très curieux et j'aime apprendre de nouvelles technologies.",
     },
     {
-      name: "Maxime Dupont - Développeur back-end",
+      name: "Maxime Balluais - Développeur back-end",
       img: maxime,
       quote:
         "Je suis à l'écoute des besoins des clients pour développer des solutions efficaces.",
@@ -44,18 +45,33 @@ function AgenceComp() {
     setActiveIndex((activeIndex + 1) % teamMembers.length); // Gérer le clic sur la flèche suivante du slider
   };
 
+  const [ref, inView] = useInView({ threshold: 0.5 });
+
   return (
     <div className="body-agence">
       <Nav />
       <div className="hero-container-agence">
-        <h1>L'agence<span>.</span></h1>
-        <div className="scroll-down d-flex align-items-center justify-content-center">
-            <svg width="40" height="40" viewBox="0 0 35 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.3663 32.9828C34.7467 32.6691 34.976 32.2119 34.9982 31.7229C35.0207 31.2338 34.834 30.7578 34.4837 30.4116C34.1335 30.0657 33.6523 29.8808 33.1576 29.903C32.6626 29.9253 32.2001 30.152 31.8831 30.528L19.1993 43.0527L19.1994 1.6554C19.1668 1.05369 18.8235 0.510857 18.2903 0.219089C17.7575 -0.0730305 17.11 -0.0730306 16.5769 0.219089C16.0438 0.510866 15.7005 1.05367 15.6683 1.6554L15.6683 43.0527L2.99867 30.5087C2.66403 30.193 2.21956 30.017 1.75708 30.017C1.2946 30.017 0.849829 30.193 0.515486 30.5087C0.18534 30.8341 2.4476e-06 31.2755 2.42747e-06 31.7361C2.40733e-06 32.1967 0.185339 32.6385 0.515486 32.9635L16.2092 48.4777L16.2089 48.4777C16.5338 48.8113 16.9821 49 17.4505 49C17.9192 49 18.3675 48.8113 18.6921 48.4777L34.3663 32.9828Z" fill="black"/>
+        <h1>
+          L'agence<span>.</span>
+        </h1>
+        <a href="#team">
+          <div className="scroll-down d-flex align-items-center justify-content-center">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 35 49"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M34.3663 32.9828C34.7467 32.6691 34.976 32.2119 34.9982 31.7229C35.0207 31.2338 34.834 30.7578 34.4837 30.4116C34.1335 30.0657 33.6523 29.8808 33.1576 29.903C32.6626 29.9253 32.2001 30.152 31.8831 30.528L19.1993 43.0527L19.1994 1.6554C19.1668 1.05369 18.8235 0.510857 18.2903 0.219089C17.7575 -0.0730305 17.11 -0.0730306 16.5769 0.219089C16.0438 0.510866 15.7005 1.05367 15.6683 1.6554L15.6683 43.0527L2.99867 30.5087C2.66403 30.193 2.21956 30.017 1.75708 30.017C1.2946 30.017 0.849829 30.193 0.515486 30.5087C0.18534 30.8341 2.4476e-06 31.2755 2.42747e-06 31.7361C2.40733e-06 32.1967 0.185339 32.6385 0.515486 32.9635L16.2092 48.4777L16.2089 48.4777C16.5338 48.8113 16.9821 49 17.4505 49C17.9192 49 18.3675 48.8113 18.6921 48.4777L34.3663 32.9828Z"
+                fill="black"
+              />
             </svg>
-        </div>
+          </div>
+        </a>
       </div>
-      <div className="card-container">
+      <div id="team" className="card-container">
         <div className="tag mb-5">
           <p className="font-size-22">Team</p>
         </div>
@@ -150,34 +166,43 @@ function AgenceComp() {
           en <span>chiffre</span>
         </h2>
 
-        <div className="insights">
+        <div ref={ref} className="insights">
           <div className="row">
-            <div className="col text-center">
-              <div className="icon-container mb-5">              
-              <svg
-                width="96"
-                height="96"
-                viewBox="0 0 96 96"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_1257_1417)">
-                  <path
-                    d="M48 0C38.5065 0 29.2262 2.81515 21.3326 8.08946C13.4391 13.3638 7.28681 20.8603 3.6538 29.6312C0.0207977 38.4021 -0.929762 48.0533 0.922328 57.3643C2.77442 66.6754 7.34598 75.2282 14.0589 81.9411C20.7718 88.6541 29.3246 93.2256 38.6357 95.0777C47.9468 96.9298 57.598 95.9792 66.3688 92.3462C75.1397 88.7132 82.6363 82.5609 87.9106 74.6674C93.1849 66.7738 96 57.4935 96 48C95.9863 35.2738 90.9247 23.0728 81.9259 14.0741C72.9272 5.07531 60.7262 0.0137643 48 0ZM82.588 28H69.704C66.8199 21.3159 63.0224 15.0643 58.42 9.424C68.606 12.1957 77.2893 18.8699 82.588 28ZM66 48C65.9672 52.0726 65.3254 56.1173 64.096 60H31.904C30.6746 56.1173 30.0329 52.0726 30 48C30.0329 43.9274 30.6746 39.8827 31.904 36H64.096C65.3254 39.8827 65.9672 43.9274 66 48ZM35.112 68H60.888C57.493 74.7029 53.1526 80.8834 48 86.352C42.8455 80.8849 38.505 74.7042 35.112 68ZM35.112 28C38.5071 21.2971 42.8474 15.1166 48 9.648C53.1545 15.1151 57.4951 21.2958 60.888 28H35.112ZM37.6 9.424C32.9907 15.0631 29.1864 21.3148 26.296 28H13.412C18.7154 18.8657 27.4067 12.191 37.6 9.424ZM9.84402 36H23.6C22.5631 39.9166 22.0255 43.9486 22 48C22.0255 52.0515 22.5631 56.0834 23.6 60H9.84402C7.38538 52.1889 7.38538 43.8111 9.84402 36ZM13.412 68H26.296C29.1864 74.6852 32.9907 80.9369 37.6 86.576C27.4067 83.809 18.7154 77.1343 13.412 68ZM58.42 86.576C63.0224 80.9357 66.8199 74.6841 69.704 68H82.588C77.2893 77.1301 68.606 83.8043 58.42 86.576ZM86.156 60H72.4C73.437 56.0834 73.9746 52.0515 74 48C73.9746 43.9486 73.437 39.9166 72.4 36H86.148C88.6067 43.8111 88.6067 52.1889 86.148 60H86.156Z"
-                    fill="#242424"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1257_1417">
-                    <rect width="96" height="96" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg></div>
+            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
+              <div className="icon-container mb-5">
+                <svg
+                  width="96"
+                  height="96"
+                  viewBox="0 0 96 96"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_1257_1417)">
+                    <path
+                      d="M48 0C38.5065 0 29.2262 2.81515 21.3326 8.08946C13.4391 13.3638 7.28681 20.8603 3.6538 29.6312C0.0207977 38.4021 -0.929762 48.0533 0.922328 57.3643C2.77442 66.6754 7.34598 75.2282 14.0589 81.9411C20.7718 88.6541 29.3246 93.2256 38.6357 95.0777C47.9468 96.9298 57.598 95.9792 66.3688 92.3462C75.1397 88.7132 82.6363 82.5609 87.9106 74.6674C93.1849 66.7738 96 57.4935 96 48C95.9863 35.2738 90.9247 23.0728 81.9259 14.0741C72.9272 5.07531 60.7262 0.0137643 48 0ZM82.588 28H69.704C66.8199 21.3159 63.0224 15.0643 58.42 9.424C68.606 12.1957 77.2893 18.8699 82.588 28ZM66 48C65.9672 52.0726 65.3254 56.1173 64.096 60H31.904C30.6746 56.1173 30.0329 52.0726 30 48C30.0329 43.9274 30.6746 39.8827 31.904 36H64.096C65.3254 39.8827 65.9672 43.9274 66 48ZM35.112 68H60.888C57.493 74.7029 53.1526 80.8834 48 86.352C42.8455 80.8849 38.505 74.7042 35.112 68ZM35.112 28C38.5071 21.2971 42.8474 15.1166 48 9.648C53.1545 15.1151 57.4951 21.2958 60.888 28H35.112ZM37.6 9.424C32.9907 15.0631 29.1864 21.3148 26.296 28H13.412C18.7154 18.8657 27.4067 12.191 37.6 9.424ZM9.84402 36H23.6C22.5631 39.9166 22.0255 43.9486 22 48C22.0255 52.0515 22.5631 56.0834 23.6 60H9.84402C7.38538 52.1889 7.38538 43.8111 9.84402 36ZM13.412 68H26.296C29.1864 74.6852 32.9907 80.9369 37.6 86.576C27.4067 83.809 18.7154 77.1343 13.412 68ZM58.42 86.576C63.0224 80.9357 66.8199 74.6841 69.704 68H82.588C77.2893 77.1301 68.606 83.8043 58.42 86.576ZM86.156 60H72.4C73.437 56.0834 73.9746 52.0515 74 48C73.9746 43.9486 73.437 39.9166 72.4 36H86.148C88.6067 43.8111 88.6067 52.1889 86.148 60H86.156Z"
+                      fill="#242424"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1257_1417">
+                      <rect width="96" height="96" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
               <p className="font-size-32">Création de sites</p>
-              <p className="font-size-80">+59%</p>
+              <CountUp
+                start={inView ? 0 : 59}
+                end={59}
+                duration={5.5}
+                prefix="+"
+                suffix="%"
+                redraw={true}
+                className="font-size-80 percentage"
+              />
               <p className="font-size-24">par rapport à 2022</p>
             </div>
-            <div className="col text-center">
+            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
               <div className="icon-container mb-5">
                 <svg
                   width="92"
@@ -199,11 +224,18 @@ function AgenceComp() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-size-32">Création de sites</p>
-              <p className="font-size-80">+59%</p>
-              <p className="font-size-24">par rapport à 2022</p>
+              <p className="font-size-32">Clients accompagnés</p>
+              <CountUp
+                start={inView ? 0 : 2000}
+                end={2000}
+                duration={5.5}
+                prefix="+"
+                redraw={true}
+                className="font-size-80 percentage"
+              />
+              <p className="font-size-24">en 2023</p>
             </div>
-            <div className="col text-center">
+            <div className="col col-lg-4 col-sm-12 col-xs-12 text-center">
               <div className="icon-container mb-5">
                 <svg
                   width="85"
@@ -225,9 +257,15 @@ function AgenceComp() {
                   </defs>
                 </svg>
               </div>
-              <p className="font-size-32">Création de sites</p>
-              <p className="font-size-80">+59%</p>
-              <p className="font-size-24">par rapport à 2022</p>
+              <p className="font-size-32">Clients satisfaits</p>
+              <CountUp
+                start={inView ? 0 : 250}
+                end={250}
+                duration={5.5}
+                redraw={true}
+                className="font-size-80 percentage"
+              />
+              <p className="font-size-24">Avis Google</p>
             </div>
           </div>
         </div>
@@ -240,4 +278,3 @@ function AgenceComp() {
 }
 
 export default AgenceComp;
-

@@ -1,11 +1,72 @@
 import Contact from "../Templates/Contact.js";
 import Footer from "../Templates/Footer.js";
+import emailjs from "emailjs-com";
+import { useState } from "react";
 
 function ContactComp() {
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [notificationType, setNotificationType] = useState("");
+
+  function sendEmail(e) {
+    e.preventDefault();
+
+    const termsAccepted = e.target.terms.checked;
+    if (!termsAccepted) {
+      setNotificationType("error");
+      setNotificationMessage("Vous devez accepter les termes et conditions");
+      setShowNotification(true);
+      return;
+    }
+
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
+
+    emailjs
+      .sendForm(
+        "service_1l2k4em",
+        "template_0z3ji2r",
+        e.target,
+        "PBYjwhKsEDh-MDmU9"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setNotificationType("success");
+          setNotificationMessage("Votre message a été envoyé avec succès");
+          setShowNotification(true);
+        },
+        (error) => {
+          console.log(error.text);
+          setNotificationType("error");
+          setNotificationMessage(
+            "Une erreur s'est produite, veuillez réessayer"
+          );
+          setShowNotification(true);
+        }
+      );
+  }
+
+  function handleNotificationClose() {
+    setShowNotification(false);
+  }
+
   return (
     <>
+      {showNotification && (
+        <div className={`notification ${notificationType}`}>
+          <p>{notificationMessage}</p>
+          <button
+            className="notification-close"
+            onClick={handleNotificationClose}
+          >
+            <span>&times;</span>
+          </button>
+        </div>
+      )}
       <div className="form-container">
-        <div className="form">
+        <form onSubmit={sendEmail}>
           <div className="row">
             <p className="col-xs-12 mb-3 font-size-32">Hey, mon nom est </p>
             <input
@@ -42,7 +103,7 @@ function ContactComp() {
               <box-icon name="right-arrow-alt" color="#ffffff"></box-icon>
             </button>
           </div>
-        </div>
+        </form>
       </div>
       <Contact />
       <Footer />

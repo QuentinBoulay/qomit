@@ -23,6 +23,7 @@ function Home() {
       <BrandSlider />
       <Contact />
       <Footer />
+      <HelpForm />
     </div>
   );
 }

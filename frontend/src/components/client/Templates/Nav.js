@@ -14,7 +14,7 @@ function Nav() {
   };
 
   return (
-      <>
+    <>
       <nav>
         <div className="row py-4 px-5 align-items-center">
           <div className="logo-container p-0 d-flex justify-content-start col-12 col-lg-3 col-md-6 col-sm-6">
@@ -26,13 +26,13 @@ function Nav() {
             <ul className="list-unstyled d-flex justify-content-center">
               <div className="d-flex">
                 <NavLink exact activeClassName="active" to="/">
-                  <li className="mr-1 font-size-14">Accueil</li>
+                  <li className="font-size-14">Accueil</li>
                 </NavLink>
                 <NavLink activeClassName="active" to="/admin/posts">
-                  <li className="mr-1 font-size-14">Services</li>
+                  <li className="font-size-14">Services</li>
                 </NavLink>
                 <NavLink activeClassName="active" to="/agence">
-                  <li className="mr-1 font-size-14">L'agence</li>
+                  <li className="font-size-14">L'agence</li>
                 </NavLink>
                 <NavLink activeClassName="active" to="/admin/posts">
                   <li className="font-size-14">Devis</li>
@@ -69,17 +69,17 @@ function Nav() {
             }`}
           >
             <ul className="list-unstyled">
-              <li className="mr-1 font-size-48 active">
+              <li className="font-size-48 active">
                 <NavLink className="d-inline-block active" to="/">
                   Accueil
                 </NavLink>
               </li>
-              <li className="mr-1 font-size-48">
+              <li className="font-size-48">
                 <NavLink className="d-inline-block" to="/admin/posts">
                   Services
                 </NavLink>
               </li>
-              <li className="mr-1 font-size-48">
+              <li className="font-size-48">
                 <NavLink className="d-inline-block" to="/agence">
                   L'agence
                 </NavLink>
@@ -114,7 +114,7 @@ function Nav() {
           </div>
         </div>
       </nav>
-      </>
+    </>
   );
 }
 
