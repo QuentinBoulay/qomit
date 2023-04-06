@@ -15,17 +15,17 @@ function Footer() {
         <div className="col-footer-section col-6 col-md-3 col-lg-2">
           <ul className="list-unstyled">
             <li>
-              <NavLink activeClassName="active-footer" to="/">
+              <NavLink activeClassName="current-page" to="/">
                 Accueil
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active-footer" to="/services">
+              <NavLink activeClassName="current-page" to="/services">
                 Services
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active-footer" to="/agence">
+              <NavLink activeClassName="current-page" to="/agence">
                 L'agence
               </NavLink>
             </li>
@@ -34,17 +34,17 @@ function Footer() {
         <div className="col-footer-section col-6 col-md-3 col-lg-2">
           <ul className="list-unstyled">
             <li>
-              <NavLink exact activeClassName="active-footer" to="/devis">
+              <NavLink exact activeClassName="current-page" to="/devis">
                 Devis
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active-footer" to="/contact">
+              <NavLink activeClassName="current-page" to="/contact">
                 Contact
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active-footer" to="/">
+              <NavLink activeClassName="current-page" to="/">
                 Espace client
               </NavLink>
             </li>

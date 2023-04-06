@@ -4,7 +4,7 @@ function Services() {
   const [selectedService, setSelectedService] = useState({
     num: "01",
     title: "Développement web",
-    text: "Lorem ipsum dolor sit amet. Praesent eu est a velit viverra aliquam.",
+    text: "Qomit, spécialiste dans le développement web, offrant des solutions adaptés au besoin de chaque client.",
     gif: "https://lottie.host/c0890e44-a909-4372-b769-660d161f67a9/hLjYM7mcxj.json",
   });
 
@@ -47,7 +47,7 @@ function Services() {
                 handleServiceClick(
                   "01",
                   "Développement web",
-                  "Lorem ipsum dolor sit amet. Praesent eu est a velit viverra aliquam.",
+                  "Qomit, spécialiste dans le développement web, offrant des solutions adaptés au besoin de chaque client.",
                   "https://lottie.host/c0890e44-a909-4372-b769-660d161f67a9/hLjYM7mcxj.json"
                 )
               }
@@ -63,7 +63,7 @@ function Services() {
                 handleServiceClick(
                   "02",
                   "Maintenance technique",
-                  "Lorem ipsum dolor sit amet. Praesent eu est a velit viverra aliquam.",
+                  "Chez Qomit, nous vous accompagnons encore, veillant à préserver une solution de haute qualité et durable.",
                   "https://lottie.host/e39a53a5-eb5e-4c35-bc64-c1c525a41d82/oldLji35qk.json"
                 )
               }
@@ -78,14 +78,14 @@ function Services() {
               onClick={() =>
                 handleServiceClick(
                   "03",
-                  "Accompagnement",
-                  "Lorem ipsum dolor sit amet. Praesent eu est a velit viverra aliquam.",
+                  "Marketing web",
+                  "Qomit boost votre présence en ligne. Nos différentes stratégies assurent visibilité et résultats pour votre entreprise.",
                   "https://lottie.host/2701362e-b03e-41fd-961c-b5277dbc789b/aCvD8DkmxL.json"
                 )
               }
             >
               <p className="mb-0 font-size-22">03.</p>
-              <h3 className="mb-0">Accompagnement</h3>
+              <h3 className="mb-0">Marketing web</h3>
             </div>
             <div
               className={`input-container ${
@@ -94,14 +94,31 @@ function Services() {
               onClick={() =>
                 handleServiceClick(
                   "04",
-                  "Conseil",
-                  "Lorem ipsum dolor sit amet. Praesent eu est a velit viverra aliquam.",
+                  "Web design",
+                  "Qomit crée votre identité visuelle grâce au webdesign, pour un site web esthétique et ergonomique qui reflète votre marque.",
                   "https://lottie.host/c0890e44-a909-4372-b769-660d161f67a9/hLjYM7mcxj.json"
                 )
               }
             >
               <p className="mb-0 font-size-22">04.</p>
-              <h3 className="mb-0">Conseil</h3>
+              <h3 className="mb-0">Web design</h3>
+            </div>
+
+            <div
+              className={`input-container ${
+                selectedService.num === "05" ? "active-input" : ""
+              } d-flex justify-content-between align-items-center mb-4`}
+              onClick={() =>
+                handleServiceClick(
+                  "05",
+                  "Plateforme Qomit",
+                  "Avec Qomit, bénéficiez d'une plateforme centralisée pour suivre votre projet, poser des questions et accéder aux documents.",
+                  "https://lottie.host/c0890e44-a909-4372-b769-660d161f67a9/hLjYM7mcxj.json"
+                )
+              }
+            >
+              <p className="mb-0 font-size-22">05.</p>
+              <h3 className="mb-0">Plateforme Qomit</h3>
             </div>
           </div>
         </div>

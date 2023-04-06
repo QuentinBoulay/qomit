@@ -11,7 +11,32 @@ function ContactComp() {
   function sendEmail(e) {
     e.preventDefault();
 
+    const name = e.target.name.value;
+    const idea = e.target.idea.value;
+    const desc = e.target.desc.value;
     const termsAccepted = e.target.terms.checked;
+
+    if (!name) {
+      setNotificationType("error");
+      setNotificationMessage("Veuillez saisir votre nom");
+      setShowNotification(true);
+      return;
+    }
+
+    if (!idea) {
+      setNotificationType("error");
+      setNotificationMessage("Veuillez sélectionner une option");
+      setShowNotification(true);
+      return;
+    }
+
+    if (!desc) {
+      setNotificationType("error");
+      setNotificationMessage("Veuillez saisir une description");
+      setShowNotification(true);
+      return;
+    }
+
     if (!termsAccepted) {
       setNotificationType("error");
       setNotificationMessage("Vous devez accepter les termes et conditions");

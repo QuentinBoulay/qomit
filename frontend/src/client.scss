@@ -151,9 +151,8 @@ a {
   color: white;
 }
 
-.container-footer-section ul li a.active-footer {
-  color: $violet !important;
-  background-color: red !important;
+.current-page {
+  color: purple !important;
 }
 
 .contact-container a:hover,
@@ -428,6 +427,10 @@ a {
   border-radius: 50px;
 }
 
+.devis-container h2 {
+  font-weight: 400;
+}
+
 // NOS REALISATIONS
 
 .sticky-container {
@@ -496,6 +499,16 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.custom-arrow:hover {
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+
+  svg path {
+    fill: white;
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 // BRAND SLIDER
@@ -581,6 +594,10 @@ a {
   background-color: $violet;
 }
 
+.contact-section-container h2 {
+  font-weight: 400 !important;
+}
+
 .col-contact-section .contact-button {
   width: 400px;
   height: 400px;
@@ -588,7 +605,22 @@ a {
   border-radius: 100%;
 }
 
-.col-contact-section .contact-button img {
+.contact-button:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: #000;
+
+  h3 {
+    transition: all 0.3s ease-in-out;
+    color: white;
+  }
+
+  svg path {
+    transition: all 0.3s ease-in-out;
+    fill: white !important;
+  }
+}
+
+.col-contact-section .contact-button svg {
   width: 50px !important;
 }
 
@@ -641,6 +673,11 @@ a {
     color: $violet;
   }
 
+  .current-page {
+    text-decoration: underline;
+    color: $violet;
+  }
+
   .col-footer-section {
     display: flex;
     align-items: center;
@@ -668,6 +705,7 @@ a {
   height: 52px;
   margin: 0 0 0 24px;
   font-size: 24px;
+  background-color: transparent;
 }
 
 .form-container select {
@@ -675,6 +713,7 @@ a {
   border-bottom: 2px solid black;
   height: 52px;
   font-size: 24px;
+  background-color: transparent;
 }
 
 .form-container input:focus-visible,
@@ -952,10 +991,6 @@ a {
   .contact-section-container,
   .container-footer-section .row {
     padding: 60px 0 60px 0;
-  }
-
-  .col-contact-section {
-    padding: 45px 15px 45px 15px;
   }
 
   .title-white {
